@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+
+    /* The grid container */
+
+    .grid-container {
+      display: grid;
+      grid-template-areas: 'header header header header header header' 'nav content content content content content' 'footer footer footer footer footer footer';
+      grid-column-gap: 5px;
+      width: 60%;
+      background: rgb(199, 195, 195);
+    }
+
+
+    .nav,
+    .content,
+    .header,
+    .footer {
+      margin: 5px;
+      padding: 5px;
+      text-align: left;
+      background-color: white;
+      font-size: 15px;
+    }
+
+
+    .nav,
+    .content {
+      height: 300px;
+      /* Should be removed. Only for demonstration */
+    }
+
+
+    /* Style the header */
+
+    .header {
+      grid-area: header;
+    }
+
+    /* Style the nav column */
+
+    .nav {
+      grid-area: nav;
+    }
+
+    /* Side navigation links */
+
+    .nav a {
+      padding: 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav a:hover {
+      background-color: black;
+      color: white;
+    }
+
+
+
+    /* Style the content column */
+
+    .content {
+      overflow: auto;
+      grid-area: content;
+    }
+
+    /* Style the footer */
+
+    .footer {
+      grid-area: footer;
+
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="grid-container">
+    <div class="header">
+      <h2>Header</h2>
+    </div>
+    <div class="nav">
+      <a href="#">Link</a>
+      <a href="#">Link</a>
+      <a href="#">Link</a>
+    </div>
+
+    <div class="content">
+      Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br> Column
+      <br>
+
+
+    </div>
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
