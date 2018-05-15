@@ -1,0 +1,57 @@
+<style>
+    body {
+      font-family: Arial;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-areas: 'header header header header header header' 'nav content content content content content' 'footer footer footer footer footer footer';
+      grid-column-gap: 5px;
+      width: 100vw;
+      height: 100vh;
+      background: rgb(199, 195, 195);
+    }
+
+    .nav,
+    .content,
+    .header,
+    .footer {
+      margin: 5px;
+      padding: 5px;
+      text-align: left;
+      background-color: white;
+      font-size: 15px;
+    }
+
+    .header {
+      grid-area: header;
+      height: 55px;
+      align-self: flex-start;
+    }
+
+    .nav {
+      grid-area: nav;
+    }
+
+    .nav a {
+      padding: 16px;
+      display: block;
+    }
+
+    .nav a:hover {
+      background-color: black;
+      color: white;
+    }
+
+    .content {
+
+      overflow: scroll;
+      grid-area: content;
+    }
+
+    .footer {
+      grid-area: footer;
+      height: 55px;
+      align-self: flex-end;
+    }
+  </style>
