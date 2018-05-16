@@ -7,7 +7,20 @@
     align-content: flex-start;
     height: 80px;
 }
-.header a {
+
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 78px;
+    flex-grow: 6;
+}
+
+.navbar a {
     cursor: pointer;
     display: block;
     margin-top: -4px;
@@ -21,18 +34,6 @@
     position: relative;
     border-top: 4px solid transparent;
     transition: border-top-color .2s;
-}
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: flex-start;
-    height: 50px;
-    flex-grow: 6;
-    padding-top: 15px;
 }
 
 .signin{
