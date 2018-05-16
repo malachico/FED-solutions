@@ -32,6 +32,7 @@
     align-content: flex-start;
     height: 50px;
     flex-grow: 6;
+    padding-top: 15px;
 }
 
 .signin{
