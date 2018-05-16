@@ -1,0 +1,48 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 80px;
+}
+.header a {
+    cursor: pointer;
+    display: block;
+    margin-top: -4px;
+    padding-top: 26px;
+    padding-left: 23px;
+    padding-right: 23px;
+    display: block;
+    height: 50px;
+    color: #20303c;
+    text-decoration: none;
+    position: relative;
+    border-top: 4px solid transparent;
+    transition: border-top-color .2s;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 50px;
+    flex-grow: 6;
+}
+
+.signin{
+    flex-grow: 1;
+    align-self: flex-end;
+}
+
+.logo {
+    flex-grow: 1;
+    display: block
+   
+}
+
+
