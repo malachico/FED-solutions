@@ -16,16 +16,8 @@
   
 }
 
-.header {
-  height: 10%;
-}
-
-.footer {
-  height: 10%;  
-}
-
 .aside {
-    height: 80%;
+    height: 87%;
 }
 .aside-1 {
 }
@@ -47,6 +39,7 @@
 }
 
 body {
+  margin: 0px;
   height: 100%;
 }
 
