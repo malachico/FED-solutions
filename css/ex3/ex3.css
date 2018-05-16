@@ -7,15 +7,5 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-areas: 
-    'header' 
-    'search'
-    'products'
-    'topics'
-    'footer';
-   
-}
-
-.header a:hover{
-    border-top: 4px solid #4eb7f5
+    grid-template-rows: [header] 78px [search] 300px [products] 1960px [topics] 734px [footer] 563px;
 }
