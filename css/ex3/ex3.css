@@ -1,0 +1,127 @@
+
+body {
+    font-family: arial;
+    
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    'header' 
+    'search'
+    'products'
+    'topics'
+    'footer';
+   
+}
+
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 80px;
+}
+.header a {
+    cursor: pointer;
+    display: block;
+    margin-top: -4px;
+    padding-top: 26px;
+    padding-left: 23px;
+    padding-right: 23px;
+    display: block;
+    height: 50px;
+    color: #20303c;
+    text-decoration: none;
+    position: relative;
+    border-top: 4px solid transparent;
+    transition: border-top-color .2s;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 50px;
+    flex-grow: 6;
+}
+
+.signin{
+    flex-grow: 1;
+    align-self: flex-end;
+}
+
+.logo {
+    flex-grow: 1;
+    display: block
+    
+}
+
+
+
+
+
+.header a:hover{
+    border-top: 4px solid #4eb7f5
+}
+
+
+
+/* 
+.nav,
+.content,
+.header,
+.footer {
+    margin: 5px;
+    padding: 5px;
+    text-align: left;
+    background-color: white;
+    font-size: 15px;
+}
+
+.header {
+    grid-area: header;
+    height: 55px;
+    align-self: flex-start;
+}
+
+.nav {
+    grid-area: nav;
+}
+
+.nav a {
+    padding: 16px;
+    display: block;
+}
+
+.nav a:hover {
+    background-color: black;
+    color: white;
+}
+
+.content {
+
+    overflow: scroll;
+    grid-area: content;
+}
+
+.footer {
+    grid-area: footer;
+    height: 55px;
+    align-self: flex-end;
+}
+
+
+@media screen and (max-width: 575px) {
+    .grid-container {
+      display: block;
+      }
+} */
