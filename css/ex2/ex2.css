@@ -32,6 +32,8 @@
 
 .aside-2 {
   overflow: scroll;
+  /* WTF?! */
+  width: 30%;
 }
 
 @media all and (min-width: 600px) {
