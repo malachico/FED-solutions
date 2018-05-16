@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;  
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+  height: 100%;
+  background-color: gray;
+}
+
+.wrapper > * {
+  padding: 10px;
+  margin: 5px;
+  flex: 1 100%;
+  background-color: white;
+  
+  
+}
+
+.header {
+  height: 10%;
+}
+
+.footer {
+  height: 10%;  
+}
+
+.aside {
+    height: 80%;
+}
+.aside-1 {
+}
+
+.aside-2 {
+  overflow: scroll;
+}
+
+@media all and (min-width: 600px) {
+  .aside{ flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+  .aside-1 { order: 1; } 
+  .aside-2 { order: 2; }
+  .footer  { order: 3; }
+}
+
+body {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
