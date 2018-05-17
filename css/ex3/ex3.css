@@ -1,6 +1,7 @@
 
 body {
     font-family: arial;
+    margin: 0px;
     
 }
 
@@ -14,8 +15,4 @@ body {
     'topics'
     'footer';
    
-}
-
-.header a:hover{
-    border-top: 4px solid #4eb7f5
 }
