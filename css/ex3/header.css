@@ -6,13 +6,11 @@
     height: 78px;
 }
 
-
 /* Logo*/
 .logo {
     padding-left: 38px;
     padding-right: 38px;
 }
-
 
 /* Navigation bar*/
 .navbar {
@@ -21,8 +19,6 @@
     flex-wrap: nowrap;
     align-items: stretch;
 }
-
-
 
 .navbar a {
     color: #43515c;
@@ -33,13 +29,12 @@
     transition: border-top-color .2s;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     border-top: 4px solid #4eb7f5
 }
 
-
 /* Sign in */
-.signin{
+.signin {
     color: #459fed;
     border: 1px solid #459fed;
     text-align: center;
@@ -49,10 +44,7 @@
     margin-left: auto;
     padding-top: 10px;
     padding-bottom: 10px;
-
-    
 }
-
 
 .signin:hover {
     color: white;

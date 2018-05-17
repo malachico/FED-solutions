@@ -2,17 +2,4 @@
 body {
     font-family: arial;
     margin: 0px;
-
-}
-
-
-.grid-container {
-    display: grid;
-    grid-template-areas: 
-    'header' 
-    'search'
-    'products'
-    'topics'
-    'footer';
-   
 }
