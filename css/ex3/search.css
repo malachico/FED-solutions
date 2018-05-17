@@ -55,6 +55,10 @@
     font-weight: lighter;
     border: 0px;
     font-size: 16px;
+}
 
-
+.search-icon {
+    position: absolute;
+    top: 36%;
+    left: 93%;
 }
