@@ -1,85 +1,63 @@
 .header {
-    grid-row-start: header;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: flex-start;
-    height: 80px;
+    align-items: center;
+    height: 78px;
 }
 
 
+/* Logo*/
+.logo {
+    padding-left: 38px;
+    padding-right: 38px;
+}
+
+
+/* Navigation bar*/
 .navbar {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-wrap: nowrap;
     align-items: stretch;
-    align-content: flex-start;
-    height: 78px;
-    flex-grow: 6;
 }
 
+
+
 .navbar a {
-    color:red;
-    margin-right: 5px;
+    color: #43515c;
     cursor: pointer;
-    display: block;
-    margin-top: -11px;
-    padding-top: 26px;
     padding-left: 23px;
     padding-right: 23px;
-    display: block;
-    height: 50px;
-    color: #20303c;
-    text-decoration: none;
-    position: relative;
     border-top: 4px solid transparent;
     transition: border-top-color .2s;
 }
 
-.signin-border{
-    flex-grow: 1;
+.navbar a:hover{
+    border-top: 4px solid #4eb7f5
+}
 
+
+/* Sign in */
+.signin{
     color: #459fed;
     border: 1px solid #459fed;
-    height: 30px;
     text-align: center;
     cursor: pointer;
-    padding: 12px 25px 3px;
-    float: right;
-    position: relative;
     border-radius: 50px;
-    width: 16px;
-    margin-top: 13px;
+    width: 98px;
+    margin-left: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
     
 }
 
-.signin-text {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    vertical-align: baseline;
-    background: transparent;
-}
 
-.signin-border:hover {
+.signin:hover {
     color: white;
     background-color: #459fed;
 }
 
-.logo {
-    margin-right: 5px;
-    margin-left: 5px;
-    flex-grow: 1;
-    display: block
-}
 
-
-.header a:hover{
-    border-top: 4px solid #4eb7f5
-}
 

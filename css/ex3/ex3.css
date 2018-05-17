@@ -1,11 +1,18 @@
 
 body {
     font-family: arial;
-    
+    margin: 0px;
+
 }
 
 
 .grid-container {
     display: grid;
-    grid-template-rows: [header] 78px [search] 300px [products] 1960px [topics] 734px [footer] 563px;
+    grid-template-areas: 
+    'header' 
+    'search'
+    'products'
+    'topics'
+    'footer';
+   
 }
