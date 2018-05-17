@@ -1,4 +1,7 @@
 .header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -50,6 +53,3 @@
     color: white;
     background-color: #459fed;
 }
-
-
-
