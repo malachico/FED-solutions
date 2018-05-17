@@ -2,34 +2,39 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: flex-start;
-    height: 80px;
+    align-items: center;
+    height: 78px;
 }
+
+
+.logo {
+    align-self: center;
+    width: 147px;
+    margin-left: 1px;
+}
+
+
+
+
 
 
 .navbar {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
-    align-items: stretch;
     align-content: flex-start;
-    height: 78px;
-    flex-grow: 6;
+    float:left;
 }
 
 .navbar a {
-    color:red;
     margin-right: 5px;
     cursor: pointer;
     display: block;
     margin-top: -11px;
-    padding-top: 26px;
+    padding-top: 40px;
     padding-left: 23px;
     padding-right: 23px;
-    display: block;
     height: 50px;
     color: #20303c;
     text-decoration: none;
@@ -39,14 +44,13 @@
 }
 
 .signin-border{
-    flex-grow: 1;
 
     color: #459fed;
     border: 1px solid #459fed;
     height: 30px;
     text-align: center;
     cursor: pointer;
-    padding: 12px 25px 3px;
+    padding-top: 15px;
     float: right;
     position: relative;
     border-radius: 50px;
@@ -70,12 +74,5 @@
     background-color: #459fed;
 }
 
-.logo {
-    margin-right: 5px;
-    margin-left: 5px;
-    flex-grow: 1;
-    display: block
-   
-}
 
 
