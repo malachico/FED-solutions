@@ -1,33 +1,32 @@
 .search {
     height: 300px;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    margin-top: 78px;
+    background-image: url("images/office.png");
+
 }
 
 .search-h1 {
     color: white;
     font-size: 2.75em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    bottom: -27%;
+    position: relative;
     font-weight: lighter;
+    top: 20px;
 }
 
 .search-h2 {
     text-align: center;
     color: white;
     font-size: 1.25em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    bottom: -4%;
+    position: relative;
+
     font-weight: lighter;
 }
 
 .office-img {
-    margin-top: 78px;
-    filter: brightness(70%);
+
 }
 
 .search-box {
@@ -35,10 +34,7 @@
     height: 62px;
 
     color: white;
-    position: absolute;
-    top: 43%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     background-color: white;
     border-radius: 40px;
 }
@@ -48,17 +44,14 @@
     height: 40px;
 
     background-color: transparent;
-    position: absolute;
-    top: 51%;
-    left: 47%;
-    transform: translate(-50%, -50%);
+    position: relative;
     font-weight: lighter;
     border: 0px;
     font-size: 16px;
 }
 
 .search-icon {
-    position: absolute;
+    position: relative;
     top: 36%;
     left: 93%;
 }
