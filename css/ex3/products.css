@@ -1,0 +1,9 @@
+.products {
+    display: grid;
+    grid-template-columns: [c0] 320px [c1] 320px [c2] 320px [c3] 320px;
+    grid-template-rows: [r0] 220px [r1] 220px [r2] 220px [r3] 220px [r4] 220px;
+
+    position: absolute;
+    margin-top: 378px ;
+
+}

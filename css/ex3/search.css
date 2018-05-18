@@ -2,7 +2,7 @@
     height: 300px;
     width: 100%;
     text-align: center;
-    position: fixed;
+    position: absolute;
     margin-top: 78px;
     background-image: url("images/office.png");
 
