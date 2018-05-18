@@ -32,17 +32,18 @@
 .search-box {
     width: 572px;
     height: 62px;
-
-    color: white;
+    margin: 0 auto;
     position: relative;
     background-color: white;
     border-radius: 40px;
+    top:10px;
 }
 
 .search-line {
+    color: #1c1c1c;
     width: 492px;
     height: 40px;
-
+    top: 11px;
     background-color: transparent;
     position: relative;
     font-weight: lighter;
@@ -52,6 +53,7 @@
 
 .search-icon {
     position: relative;
-    top: 36%;
-    left: 93%;
+    display: block;
+    margin-left: 535px;
+    margin-top: -19px;
 }
