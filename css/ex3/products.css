@@ -1,9 +1,50 @@
 .products {
-    display: grid;
-    grid-template-columns: [c0] 320px [c1] 320px [c2] 320px [c3] 320px;
-    grid-template-rows: [r0] 220px [r1] 220px [r2] 220px [r3] 220px [r4] 220px;
+    width: 1250px;
+    height: 1100px;
 
-    position: absolute;
-    margin-top: 378px ;
-    border: #eff1f2 1px;
+    margin: 0 auto ;
+    padding-top: 478px;
+
+    display: grid;
+    grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+}
+
+.box
+{
+    border: 1px solid #eff1f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding: 40px 40px 40px 30px;
+}
+
+.products-header {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #162d3d;
+    margin-left: -17px;
+}
+
+.products-header:hover {
+    cursor: pointer;
+    color: #459fed;
+}
+
+.products-content {
+    cursor: pointer;
+    position: relative;
+    list-style: url("images/marker.png");
+    color: #66737c;
+    margin-left: -37px;
+}
+
+
+.content-item {
+    padding-bottom: 4px;
+}
+
+.content-item:hover {
+    color: #459fed;
 }
