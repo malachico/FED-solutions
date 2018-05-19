@@ -48,3 +48,13 @@
 .content-item:hover {
     color: #459fed;
 }
+
+.show-all {
+    color: #459fed;
+    position: relative;
+    font-size: 14px;
+}
+
+.show-all:hover {
+    cursor: pointer;
+}
