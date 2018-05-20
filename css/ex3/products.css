@@ -3,7 +3,7 @@
     height: 1100px;
 
     margin: 0 auto ;
-    padding-top: 478px;
+    padding-top: 508px;
 
     display: grid;
     grid-template: repeat(5, 1fr) / repeat(4, 1fr);
@@ -11,13 +11,32 @@
 
 .box
 {
-    border: 2px solid #fafbfb;
+    border: 1px solid #fafbfb;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
     padding: 40px 40px 40px 30px;
 }
+
+
+.left-box {
+    border-left-color: transparent;
+}
+
+.right-box {
+    border-right-color: transparent;
+}
+
+.top-box {
+    border-top-color: transparent;
+}
+
+.bottom-box {
+    border-bottom-color: transparent;
+}
+
+
 
 .products-header {
     font-weight: 500;
