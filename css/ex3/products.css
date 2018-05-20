@@ -11,7 +11,7 @@
 
 .box
 {
-    border: 1px solid #eff1f2;
+    border: 2px solid #fafbfb;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,4 +57,25 @@
 
 .show-all:hover {
     cursor: pointer;
+}
+
+.show-more {
+    text-align: center;
+    border-radius: 40px;
+    padding: 9px 23px 11px;
+    border: solid 1px #459fed;
+    color: #459fed;
+    font-size: 16px;
+    font-weight: 300;
+    cursor: pointer;
+    background-color: #ffffff;
+    width: 95px;
+    margin: 40px auto 0px auto;;
+
+}
+
+
+.show-more:hover {
+    color: white;
+    background-color: #459fed;
 }
