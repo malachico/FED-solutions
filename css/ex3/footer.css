@@ -1,0 +1,18 @@
+.footer {
+    display: grid;
+    width: 1306px;
+    height: 383px;
+    grid-template-columns: [col0] 232px [col1] 232px [col2] 232px [col3] 232px [col4] auto;
+    grid-template-rows: [row0] 43px [row1] 30px [row2] 30px [row3] 30px [row4] 30px [row5] 30px [row6] 30px [row7] 30px [row8] 30px [row9] 30px [row10] 30px [row11] 30px ;
+    padding: 100px 88px 80px 72px;
+    margin: 0 auto;
+
+}
+
+.footer-title {
+
+}
+
+.footer-content {
+
+}

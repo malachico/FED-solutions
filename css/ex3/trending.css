@@ -1,6 +1,7 @@
 .trending {
     background-color: #fafbfb;
     padding: 50px 0;
+    border-bottom: 1px solid #eff1f2;
 }
 
 .trending-h1 {
