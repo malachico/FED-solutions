@@ -1,4 +1,8 @@
 .products {
+    border-bottom: 1px solid #eff1f2;
+}
+
+.products-grid {
     width: 1250px;
     height: 1100px;
 
@@ -90,6 +94,7 @@
     background-color: #ffffff;
     width: 95px;
     margin: 40px auto 30px auto;;
+
 
 }
 
