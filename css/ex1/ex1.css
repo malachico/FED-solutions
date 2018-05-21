@@ -1,17 +1,11 @@
 
+body, html {
+    height: 100%;
+}
 body {
+    background-color: gray;
     font-family: Arial;
     margin: 0px;
-}
-
-.grid-container {
-    display: grid;
-    
-    grid-template-areas: 'header header header header header header' 'nav content content content content content' 'footer footer footer footer footer footer';
-    grid-column-gap: 5px;
-    width: 100vw;
-    height: 100vh;
-    background: rgb(199, 195, 195);
 }
 
 .nav,
@@ -19,47 +13,57 @@ body {
 .header,
 .footer {
     margin: 5px;
-    padding: 5px;
-    text-align: left;
+    /*padding: 5px;*/
+    /*text-align: left;*/
     background-color: white;
-    font-size: 15px;
+    /*font-size: 15px;*/
 }
 
 .header {
-    grid-area: header;
-    height: 55px;
-    align-self: flex-start;
+    position: fixed;
+    top: 0px;
+    height: 10%;
+    margin: 5px;
+    width: 100%;
 }
 
-.nav {
-    grid-area: nav;
-}
-
-.nav a {
-    padding: 16px;
-    display: block;
-}
-
-.nav a:hover {
-    background-color: black;
-    color: white;
-}
-
-.content {
-
-    overflow: scroll;
-    grid-area: content;
-}
 
 .footer {
-    grid-area: footer;
-    height: 55px;
-    align-self: flex-end;
+    position: fixed;
+    margin: 5px;
+    height: 10%;
+    width: 100%;
+    bottom: 0px;
 }
 
+.nav{
+    float: left;
+    width: 30%;
+    height: 100%;
+}
 
-@media screen and (max-width: 575px) {
-    .grid-container {
-      display: block;
-      }
+.content{
+    float: right;
+    width: 68%;
+    height: 100%;
+    overflow: scroll;
+}
+.main-div {
+    background-color: transparent;
+    position: relative;
+    top: 11%;
+    height: 77%;
+    margin: 5px;
+}
+
+@media (max-width: 1000px)
+{
+    .nav {
+        width: 99%;
+        float: none;
+    }
+    .content {
+        width : 99%;
+        float: none;
+    }
 }
