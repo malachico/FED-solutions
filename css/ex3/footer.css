@@ -27,3 +27,27 @@
     line-height: 16px;
     display: block;
 }
+
+.footer-about {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 8px;
+    color: #43515c;
+
+}
+
+.footer-social-logo {
+    display: flex;
+    width: 100%;
+    height: 24px;
+    margin-left: -13px;
+}
+
+.footer-social-logo  svg {
+    width: 24px;
+    height: 27px;
+    margin-right: 14px;
+    margin-top: 12px;
+    fill: #43515c;
+}
