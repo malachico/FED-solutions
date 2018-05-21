@@ -36,14 +36,16 @@ body {
 }
 
 .nav{
+    margin: 0;
     float: left;
     width: 30%;
     height: 100%;
 }
 
 .content{
+    margin: 0;
     float: right;
-    width: 68%;
+    width: 69%;
     height: 100%;
     overflow: scroll;
 }
@@ -55,7 +57,7 @@ body {
     margin: 5px;
 }
 
-@media (max-width: 1000px)
+@media (max-width: 800px)
 {
     .nav {
         width: 99%;
