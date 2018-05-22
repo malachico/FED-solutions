@@ -64,6 +64,10 @@
     color: #43515c;
 }
 
+.article-topic:hover {
+    color: #459fed;
+}
+
 .article-marker {
     display: inline-block;
     font-style: normal;
