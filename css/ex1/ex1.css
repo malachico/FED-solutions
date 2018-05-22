@@ -21,7 +21,7 @@ body {
 .header {
     position: fixed;
     top: 0px;
-    height: 10%;
+    height: 5%;
     margin: 5px;
     width: 100%;
 }
@@ -30,13 +30,13 @@ body {
 .footer {
     position: fixed;
     margin: 5px;
-    height: 10%;
+    height: 5%;
     width: 100%;
     bottom: 0px;
 }
 
 .nav{
-    margin: 0;
+    margin: auto;
     float: left;
     width: 30%;
     height: 100%;
@@ -52,18 +52,22 @@ body {
 .main-div {
     background-color: transparent;
     position: relative;
-    top: 11%;
-    height: 77%;
+    top: 6%;
+    /* bottom: -55px; */
+    height: 87%;
     margin: 5px;
 }
 
 @media (max-width: 800px)
 {
-    .nav {
+    .nav{
         width: 99%;
         float: none;
+        height: 49%;
     }
     .content {
+        height: 49%;
+
         width : 99%;
         float: none;
     }
