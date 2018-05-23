@@ -22,7 +22,7 @@
     font-size: 22px;
     position: relative;
     font-weight: 400;
-    top:33px;
+    top: 33px;
 }
 
 .office-img {
@@ -36,7 +36,7 @@
     position: relative;
     background-color: transparent;
     border-radius: 40px;
-    top:34px;
+    top: 34px;
 }
 
 .search-line {
@@ -64,6 +64,52 @@
     margin-top: -40px;
 }
 
-input.search-line:focus{
+input.search-line:focus {
     outline: none;
+}
+
+@media (max-width: 1130px) {
+    .search {
+        margin-top: 44px;
+    }
+}
+
+@media (max-width: 750px) {
+    .search {
+        height: 210px;
+    }
+
+    .search-h2 {
+        visibility: hidden;
+    }
+
+    .search-h1 {
+        font-size: 2.2em;
+    }
+
+    .search-box {
+        width: 100%;
+        height:100px;
+        background-color: #fafbfb;
+        margin-top: 39px;
+        border-radius: 0;
+
+    }
+
+    .search-line {
+        margin-top: 18px;
+    }
+
+
+
+
+    /*.search-box {*/
+        /*width: 572px;*/
+        /*height: 62px;*/
+        /*margin: 0 auto;*/
+        /*position: relative;*/
+        /*background-color: transparent;*/
+        /*border-radius: 40px;*/
+        /*top: 34px;*/
+    /*}*/
 }
