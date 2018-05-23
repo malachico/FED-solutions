@@ -25,30 +25,24 @@
     top:33px;
 }
 
-.office-img {
-
-}
-
-.search-box {
-    width: 572px;
-    height: 62px;
-    margin: 0 auto;
-    position: relative;
-    background-color: white;
-    border-radius: 40px;
-    top:34px;
-}
-
 .search-line {
     color: #1c1c1c;
-    width: 492px;
-    height: 40px;
-    top: 11px;
-    background-color: transparent;
     position: relative;
     font-weight: lighter;
     border: 0px;
     font-size: 16px;
+    width: 542px;
+    height: 62px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 40px;
+    top:34px;
+    padding-left: 30px;
+}
+
+.search-line:focus {
+    background-color: #ddf4ff;
+
 }
 
 .search-icon {

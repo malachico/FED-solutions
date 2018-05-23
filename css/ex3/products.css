@@ -3,14 +3,11 @@
 }
 
 .products-grid {
-    width: 1250px;
-    height: 1100px;
-
-    margin: 0 auto ;
+    justify-content:  center;
+    margin: 0 auto;
     padding-top: 508px;
-
     display: grid;
-    grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+    grid-template-columns: repeat(4, 312px);
 }
 
 .box
