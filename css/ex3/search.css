@@ -98,18 +98,9 @@ input.search-line:focus {
 
     .search-line {
         margin-top: 18px;
+        border: 1px solid #e8e8e8;
     }
 
 
 
-
-    /*.search-box {*/
-        /*width: 572px;*/
-        /*height: 62px;*/
-        /*margin: 0 auto;*/
-        /*position: relative;*/
-        /*background-color: transparent;*/
-        /*border-radius: 40px;*/
-        /*top: 34px;*/
-    /*}*/
 }
