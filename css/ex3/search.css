@@ -25,6 +25,20 @@
     top:33px;
 }
 
+.office-img {
+
+}
+
+.search-box {
+    width: 572px;
+    height: 62px;
+    margin: 0 auto;
+    position: relative;
+    background-color: transparent;
+    border-radius: 40px;
+    top:34px;
+}
+
 .search-line {
     color: #1c1c1c;
     position: relative;
@@ -36,20 +50,18 @@
     margin: 0 auto;
     background-color: white;
     border-radius: 40px;
-    top:34px;
     padding-left: 30px;
 }
 
 .search-line:focus {
-    background-color: #ddf4ff;
-
+    background-color: #d0e8f3;
 }
 
 .search-icon {
     position: relative;
     display: block;
     margin-left: 535px;
-    margin-top: -19px;
+    margin-top: -40px;
 }
 
 input.search-line:focus{
