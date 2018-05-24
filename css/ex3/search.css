@@ -74,6 +74,10 @@ input.search-line:focus {
     .search {
         margin-top: 44px;
     }
+
+    .search-icon {
+        margin-left: 93%;
+    }
 }
 
 @media (max-width: 750px) {
@@ -102,6 +106,10 @@ input.search-line:focus {
         margin-top: 18px;
     }
 
+
+    .search-icon {
+        margin-left: 87%;
+    }
 
 
 }
