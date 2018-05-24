@@ -121,6 +121,41 @@
         display: none;
     }
 
+}
 
 
+/* Menus */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    border-radius: 0 0 8px 8px;
+    background: white;
+    z-index: 1;
+    top: 79px;
+    width: 145px;
+
+}
+
+.explore-dropdown:hover .dropdown-content{
+    display: flex;
+
+}
+
+.dropdown-box {
+    height: 48px;
+    background-color: transparent;
+    margin: 0 auto;
+    border-top: 1px solid #eff1f2;
+    text-align: center;
+    width: 100%;
+}
+
+.dropdown-text {
+    height: 20px;
+    margin: 0 auto;
+}
+
+.dropdown-text:hover {
+    color: #4eb7f5;
 }
