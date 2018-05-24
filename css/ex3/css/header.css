@@ -125,7 +125,7 @@
 
 
 /* Menus */
-.dropdown-content {
+.dropdown-explore-menu {
     display: none;
     position: absolute;
     flex-direction: column;
@@ -137,7 +137,7 @@
 
 }
 
-.explore-dropdown:hover .dropdown-content{
+.explore-dropdown:hover .dropdown-explore-menu{
     display: flex;
 
 }
@@ -158,4 +158,22 @@
 
 .dropdown-text:hover {
     color: #4eb7f5;
+}
+
+
+/* Subscription menu*/
+.dropdown-subscription-menu {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    border-radius: 0 0 8px 8px;
+    background: white;
+    z-index: 1;
+    top: 79px;
+    width: 166px;
+
+}
+
+.subscription-dropdown:hover .dropdown-subscription-menu{
+    display: flex;
 }
