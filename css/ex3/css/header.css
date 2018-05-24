@@ -127,14 +127,14 @@
 /* Menus */
 .dropdown-explore-menu {
     display: none;
-    position: absolute;
+    position: fixed;
     flex-direction: column;
     border-radius: 0 0 8px 8px;
     background: white;
     z-index: 1;
     top: 79px;
     width: 145px;
-
+    left: 545px;
 }
 
 .explore-dropdown:hover .dropdown-explore-menu{
@@ -164,14 +164,14 @@
 /* Subscription menu*/
 .dropdown-subscription-menu {
     display: none;
-    position: absolute;
+    position: fixed;
     flex-direction: column;
     border-radius: 0 0 8px 8px;
     background: white;
     z-index: 1;
     top: 79px;
     width: 166px;
-
+    left: 670px;
 }
 
 .subscription-dropdown:hover .dropdown-subscription-menu{
