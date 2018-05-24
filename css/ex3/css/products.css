@@ -169,3 +169,13 @@
     color: #162d3d;
 
 }
+
+.shrinked-products-box-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-item-shrinked {
+    margin-left: 70px;
+    line-height: 1.6em;
+}
