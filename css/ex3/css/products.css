@@ -55,7 +55,7 @@
 .products-content {
     cursor: pointer;
     position: relative;
-    list-style: url("images/marker.png");
+    list-style: url("../images/marker.png");
     color: #66737c;
     margin-left: -37px;
 }
