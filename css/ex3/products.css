@@ -101,6 +101,24 @@
     background-color: #459fed;
 }
 
+.shrinked-products {
+    display: none;
+}
+
+@media (max-width: 1300px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 312px);
+
+    }
+}
+
+@media (max-width: 1000px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 312px);
+
+    }
+}
+
 @media (max-width: 750px) {
     .products {
         display: none;
