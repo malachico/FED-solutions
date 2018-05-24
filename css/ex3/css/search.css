@@ -97,7 +97,6 @@ input.search-line:focus {
         width: 100%;
         height:100px;
         background-color: #fafbfb;
-        margin-top: 39px;
         border-radius: 0;
 
     }
@@ -112,4 +111,11 @@ input.search-line:focus {
     }
 
 
+}
+
+
+@media (max-width: 450px) {
+    .search-box {
+        top: 0px;
+    }
 }
