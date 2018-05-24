@@ -90,3 +90,28 @@
     margin-top: -7px;
     margin-left: -3px;
 }
+
+
+
+@media (max-width: 1130px) {
+
+    .trending-grid {
+        width: 600px;
+        grid-template: repeat(10, 1fr) / repeat(1, 1fr);
+        grid-row-gap: 20px;
+        height: 100%;
+    }
+}
+
+@media (max-width: 750px) {
+    .trending-grid {
+        width: 90%;
+        grid-template: repeat(5, 1fr) / repeat(1, 1fr);
+    }
+
+
+    .expanded {
+        display:none;
+    }
+
+}
