@@ -12,7 +12,8 @@
  */
 
 // Number to roman map convert
-const NumToRoman = {
+const numToRomanMap = {
+    0: '',
     1: 'I',
     2: 'II',
     3: 'III',
@@ -22,17 +23,44 @@ const NumToRoman = {
     7: 'VII',
     8: 'VIII',
     9: 'IX',
-    10: 'X',
-    50: 'L',
 };
+
+// Chain of responsibility
+const chains = new Map();
+chains.set(50, 'L');
+chains.set(10, 'X');
 
 // hh:mm regular expression
 const timeRegExp = new RegExp('^([01]\\d|2[0-3]):([0-5]\\d)$');
 
+function numToRoman(num) {
+    let result = '';
+
+    for (var [key, value] of chains.entries()) {
+        while (num >= key) {
+            result += value;
+            num -= key;
+        }
+    }
+    result += numToRomanMap[num];
+
+    return result === '' ? 'N' : result;
+}
+
+
 function romanTime(time) {
     //check pattern
-    timeRegExp.test(time);
-    return time;
+    if (timeRegExp.test(time) === false) {
+        // throw new TypeError("bad input");
+        return "error: bad input";
+    }
+    //split time
+    var splitted = time.split(':');
+
+    let hours = Number(splitted[0]);
+    let minutes = Number(splitted[1]);
+
+    return numToRoman(hours) + ":" + numToRoman(minutes);
 }
 
 module.exports = romanTime;
@@ -88,15 +116,17 @@ it('correct input "00:50" -> N:L', function () {
 
 // bad input
 it('bad input "09:65" -> error', function () {
-    assert.equal(romanTime("09:65"), error);
+    assert.equal(romanTime("09:65"), "error: bad input");
 });
 
 it('bad input "25:05" -> error', function () {
-    assert.equal(romanTime("25:05"), error);
+    assert.equal(romanTime("25:05"), "error: bad input");
 });
+
 it('bad input "09.05" -> error', function () {
-    assert.equal(romanTime("09.05"), error);
+    assert.equal(romanTime("09.05"), "error: bad input");
 });
+
 it('bad input "0905" -> error', function () {
-    assert.equal(romanTime("0905"), error);
+    assert.equal(romanTime("0905"), "error: bad input");
 });
