@@ -11,6 +11,20 @@
  * 2. You might get any number/word as an input. If the input is not valid, throw a TypeError.
  */
 
+const NumToRoman = {
+    1: 'I',
+    2: 'II',
+    3: 'III',
+    4: 'IV',
+    5: 'V',
+    6: 'VI',
+    7: 'VII',
+    8: 'VIII',
+    9: 'IX',
+    10: 'X',
+    50: 'L',
+};
+
 function romanTime(time) {
     // little of your code and some magic
     return time;
