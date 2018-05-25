@@ -11,6 +11,7 @@
  * 2. You might get any number/word as an input. If the input is not valid, throw a TypeError.
  */
 
+// Number to roman map convert
 const NumToRoman = {
     1: 'I',
     2: 'II',
@@ -25,17 +26,51 @@ const NumToRoman = {
     50: 'L',
 };
 
+// hh:mm regular expression
+const timeRegExp = new RegExp('^([01]\\d|2[0-3]):([0-5]\\d)$');
+
 function romanTime(time) {
-    // little of your code and some magic
+    //check pattern
+    timeRegExp.test(time);
     return time;
 }
 
 module.exports = romanTime;
 
 
-// Tests
+// Tests - Mocha
 
 const assert = require('assert');
+
+// Test reg exp
+it('correct input "09:05" -> OK', function () {
+    assert.equal(timeRegExp.test("09:05"), true);
+});
+
+it('correct input "23:59" -> OK', function () {
+    assert.equal(timeRegExp.test("23:59"), true);
+});
+
+it('correct input "00:00" -> OK', function () {
+    assert.equal(timeRegExp.test("00:00"), true);
+});
+
+it('bad input "09:65" -> false', function () {
+    assert.equal(timeRegExp.test("09:65"), false);
+});
+
+it('bad input "09.05" -> false', function () {
+    assert.equal(timeRegExp.test("9.05"), false);
+});
+
+it('bad input "0905" -> false', function () {
+    assert.equal(timeRegExp.test("0905"), false);
+});
+
+it('bad input "24:05" -> false', function () {
+    assert.equal(timeRegExp.test("24:05"), false);
+});
+
 
 // correct input
 it('correct input "09:05" -> IX:V', function () {
