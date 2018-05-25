@@ -51,8 +51,7 @@ function numToRoman(num) {
 function romanTime(time) {
     //check pattern
     if (timeRegExp.test(time) === false) {
-        // throw new TypeError("bad input");
-        return "error: bad input";
+        throw new TypeError("Bad input format. please insert hh:mm");
     }
     //split time
     var splitted = time.split(':');
@@ -83,19 +82,19 @@ it('correct input "00:00" -> OK', function () {
     assert.equal(timeRegExp.test("00:00"), true);
 });
 
-it('bad input "09:65" -> false', function () {
+it('Bad input format. please insert hh:mm "09:65" -> false', function () {
     assert.equal(timeRegExp.test("09:65"), false);
 });
 
-it('bad input "09.05" -> false', function () {
+it('Bad input format. please insert hh:mm "09.05" -> false', function () {
     assert.equal(timeRegExp.test("9.05"), false);
 });
 
-it('bad input "0905" -> false', function () {
+it('Bad input format. please insert hh:mm "0905" -> false', function () {
     assert.equal(timeRegExp.test("0905"), false);
 });
 
-it('bad input "24:05" -> false', function () {
+it('Bad input format. please insert hh:mm "24:05" -> false', function () {
     assert.equal(timeRegExp.test("24:05"), false);
 });
 
@@ -114,19 +113,23 @@ it('correct input "00:50" -> N:L', function () {
 });
 
 
-// bad input
-it('bad input "09:65" -> error', function () {
-    assert.equal(romanTime("09:65"), "error: bad input");
+// Bad input format. please insert hh:mm
+it('Bad input format. please insert hh:mm "09:65" -> error', function () {
+    const result = () => romanTime("09:65");
+    assert.throws(result, TypeError("Bad input format. please insert hh:mm"))
 });
 
-it('bad input "25:05" -> error', function () {
-    assert.equal(romanTime("25:05"), "error: bad input");
+it('Bad input format. please insert hh:mm "25:05" -> error', function () {
+    const result = () => romanTime("25:05");
+    assert.throws(result, TypeError("Bad input format. please insert hh:mm"))
 });
 
-it('bad input "09.05" -> error', function () {
-    assert.equal(romanTime("09.05"), "error: bad input");
+it('Bad input format. please insert hh:mm "09.05" -> error', function () {
+    const result = () => romanTime("09.05");
+    assert.throws(result, TypeError("Bad input format. please insert hh:mm"))
 });
 
-it('bad input "0905" -> error', function () {
-    assert.equal(romanTime("0905"), "error: bad input");
+it('Bad input format. please insert hh:mm "0905" -> error', function () {
+    const result = () => romanTime("0905");
+    assert.throws(result, TypeError("Bad input format. please insert hh:mm"))
 });
