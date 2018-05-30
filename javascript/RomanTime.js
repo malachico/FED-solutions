@@ -36,7 +36,7 @@ const timeRegExp = new RegExp('^([01]\\d|2[0-3]):([0-5]\\d)$');
 function numToRoman(num) {
     let result = '';
 
-    for (var [key, value] of chains.entries()) {
+    for (let [key, value] of chains.entries()) {
         while (num >= key) {
             result += value;
             num -= key;
