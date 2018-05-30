@@ -54,7 +54,7 @@ function romanTime(time) {
         throw new TypeError("Bad input format. please insert hh:mm");
     }
     //split time
-    var splitted = time.split(':');
+    let splitted = time.split(':');
 
     let hours = Number(splitted[0]);
     let minutes = Number(splitted[1]);
