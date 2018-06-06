@@ -1,40 +1,42 @@
 window.onload = function() {
+
+    // Create a handler according to action
+    function createHandler(action, element){
+        return () => {
+            let current = element.textContent;
+
+            current = Number(current);
+            console.log(current);
+            if (action === 'increase') {
+                element.innerHTML = current + 1;
+            }
+            else if (action === 'decrease') {
+                element.innerHTML = current - 1;
+            }
+        };
+    }
+
+    // Create button with event handler
     function createButton (name, eventHandler) {
-        // 1. Create the button
         let button = document.createElement("button");
         button.innerHTML = name;
 
-        // 2. Append somewhere
         let body = document.getElementsByTagName("body")[0];
         body.appendChild(button);
 
-        // 3. Add event handler
         button.addEventListener ("click", eventHandler);
     }
 
-    // Create buttons
-    createButton("increase", function() {
-
-        let current = document.getElementsByTagName('p')[0].textContent;
-        current = Number(current);
-
-        document.getElementsByTagName('p')[0].innerHTML = current+1;
-    });
-
-    createButton("decrease", function() {
-
-        let current = document.getElementsByTagName('p')[0].textContent;
-        current = Number(current);
-
-        document.getElementsByTagName('p')[0].innerHTML = current-1;
-    });
-
     // Create paragraph to display counter
-    let text = document.createElement("p");
+    let counterText = document.createElement("p");
 
-    // set initial counter
-    text.innerHTML = '0';
+    // Set initial counter
+    counterText.innerHTML = '0';
 
-    // appent to body
-    document.getElementsByTagName("body")[0].appendChild(text);
+    // Create buttons attached to handlers
+    createButton("increase", createHandler('increase', counterText));
+    createButton("decrease", createHandler('decrease', counterText));
+
+    // Append to body
+    document.getElementsByTagName("body")[0].appendChild(counterText);
 };
