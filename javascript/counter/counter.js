@@ -1,6 +1,6 @@
 window.onload = function () {
 
-        // Create a handler according to action
+    // Create a handler according to action
     function createHandler(action, element) {
         return () => {
             let current = Number(element.textContent);
@@ -11,7 +11,7 @@ window.onload = function () {
         }
     }
 
-        // Create button with event handler
+    // Create button with event handler
     function createButton(name, eventHandler, parent) {
         let button = document.createElement("button");
         button.innerHTML = name;
