@@ -21,9 +21,8 @@ window.onload = function () {
         button.addEventListener("click", eventHandler);
     }
 
-    // Create paragraph to display counter
+    // DOM references
     let counterText = document.createElement("p");
-
     let body = document.getElementsByTagName("body")[0];
 
     // Set initial counter
@@ -35,5 +34,4 @@ window.onload = function () {
 
     // Append to body
     body.appendChild(counterText);
-}
-;
+};
