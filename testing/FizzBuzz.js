@@ -1,3 +1,5 @@
+let fizzbuzz = require("./FizzBuzz");
+
 exports.fb = function (i) {
     switch (true) {
         case i % 3 === 0 && i % 5 === 0:
@@ -9,9 +11,10 @@ exports.fb = function (i) {
     }
 };
 
-fizzBuzz = function () {
+
+// 1. Implement FizzBuzz function.
+function FizzBuzz() {
     for (let i = 1; i <= 100; i++) {
         console.log(i + " : " + fb(i));
     }
-};
-
+}

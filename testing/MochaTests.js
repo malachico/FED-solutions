@@ -1,3 +1,4 @@
+// 2. Add a test case for each possibility, using Mocha.
 let fizzbuzz = require("./FizzBuzz");
 let chai = require("chai");
 let expect = chai.expect;
