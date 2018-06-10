@@ -5,16 +5,14 @@ const pathToDir = process.argv[2];
 const postfix = process.argv[3];
 
 
-const cb = function (err, data) {
+myModule(pathToDir, postfix, function (err, data) {
 
-    if (err) {
-        return callback(err);
+    if(err){
+        return err;
     }
 
-    const filenames = data.filter(x => x.endsWith("." + postfix));
-    console.log(filenames.join("\n"));
-
-};
+    console.log(data.join('\n'));
+});
 
 
-myModule(pathToDir, postfix, cb);
+
