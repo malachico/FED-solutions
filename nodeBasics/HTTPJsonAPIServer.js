@@ -5,14 +5,14 @@ const port = process.argv[2];
 
 function handleParseTime(time) {
     return JSON.stringify({
-        "hours": time.getHours() - 3,
-        "minutes": time.getMinutes(),
-        "seconds": time.getSeconds()
+        "hour": time.getHours(),
+        "minute": time.getMinutes(),
+        "second": time.getSeconds()
     });
 }
 
 function handleUnixTime(time) {
-    return {unixTime: time.getTime()};
+    return JSON.stringify({"unixtime": time.getTime()});
 }
 
 function handleQuery(url) {
