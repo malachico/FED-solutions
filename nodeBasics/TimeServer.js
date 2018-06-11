@@ -1,18 +1,13 @@
 const net = require('net');
 
 let now = new Date();
-console.log(dateFormatter());
-
-
 let port = process.argv[2];
 
-const server = net.createServer(function (socket) {
+net.createServer(function (socket) {
     let t = dateFormatter();
     socket.write(t);
     socket.close();
-});
-
-server.listen(port);
+}).listen(port);
 
 
 function dateFormatter () {
