@@ -25,84 +25,85 @@ describe('/GET catalog', () => {
     });
 });
 
-// Get empty orders at first
-describe('/GET orders', () => {
-    it('it should GET orders', (done) => {
-        chai.request(server).get('/api/orders').end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            expect(res.body).to.be.empty;
-            done();
+describe('simple usage', () => {
+    // Get empty orders at first
+    describe('/GET orders', () => {
+        it('it should GET orders', (done) => {
+            chai.request(server).get('/api/orders').end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
+                expect(res.body).to.be.empty;
+                done();
+            });
         });
     });
-});
 
-
-// Get empty cart at first
-describe('/GET cart', () => {
-    it('it should GET cart', (done) => {
-        chai.request(server).get('/api/cart').end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            expect(res.body).to.be.empty;
-            done();
+    // Get empty cart at first
+    describe('/GET cart', () => {
+        it('it should GET cart', (done) => {
+            chai.request(server).get('/api/cart').end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                expect(res.body).to.be.empty;
+                done();
+            });
         });
     });
-});
 
-// Add item to cart
-describe('/POST cart', () => {
-    it('it should POST item to cart', (done) => {
-        chai.request(server).post('/api/cart').send("dolphin").end((err, res) => {
-            res.should.have.status(200);
-            done();
+    // Add item to cart
+    describe('/POST cart', () => {
+        it('it should POST item to cart', (done) => {
+            chai.request(server).post('/api/cart').send({"dolphin": 1}).end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
         });
     });
-});
 
-// Cart now should have 1 dolphin
-describe('/GET cart', () => {
-    it('it should GET cart', (done) => {
-        chai.request(server).get('/api/cart').end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            res.body.length.should.be.eql({'dolphin': 1});
-            done();
+    // Cart now should contain 1 dolphin
+    describe('/GET cart', () => {
+        it('it should GET cart', (done) => {
+            chai.request(server).get('/api/cart').end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                expect(res.body).to.be.eql({'dolphin': 1});
+                done();
+            });
         });
     });
-});
 
-describe('/PUT checkout', () => {
-    it('it should PUT items from cart to orders', (done) => {
-        chai.request(server).put('/api/checkout').end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            res.body.length.should.be.eql({'dolphin': 1});
-            done();
+    // Commit checkout
+    describe('/PUT checkout', () => {
+        it('it should PUT items from cart to orders', (done) => {
+            chai.request(server).put('/api/checkout').end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.true;
+                done();
+            });
         });
     });
-});
 
-// Assert cart is  empty
-describe('/GET cart', () => {
-    it('it should GET cart', (done) => {
-        chai.request(server).get('/api/cart').end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            res.body.length.should.be.eql(0);
-            done();
+    // Assert cart is  empty
+    describe('/GET cart', () => {
+        it('it should GET cart', (done) => {
+            chai.request(server).get('/api/cart').end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                expect(res.body).to.be.eql({});
+                done();
+            });
         });
     });
-});
 
-// Assert item was moved from cart to orders
-describe('/GET orders', () => {
-    it('it should GET orders', (done) => {
-        chai.request(server).get('/api/orders').end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            res.body.length.should.be.eql({'dolphin': 1});
-            done();
+    // Assert item was moved from cart to orders
+    describe('/GET orders', () => {
+        it('it should GET orders', (done) => {
+            chai.request(server).get('/api/orders').end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
+                res.body[0].should.be.eql({'dolphin': 1});
+                done();
+            });
         });
     });
 });

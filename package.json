@@ -2,6 +2,7 @@
   "name": "FED-solutions",
   "version": "0.0.1",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "npm": "^6.1.0",
     "through2-map": "latest"
   },
