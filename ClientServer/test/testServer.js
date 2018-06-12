@@ -3,6 +3,7 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../server');
 let should = chai.should();
+let expect = chai.expect;
 
 chai.use(chaiHttp);
 // Test the /GET route
@@ -30,7 +31,7 @@ describe('/GET orders', () => {
         chai.request(server).get('/api/orders').end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
-            res.body.length.should.be.eql(0);
+            expect(res.body).to.be.empty;
             done();
         });
     });
@@ -43,7 +44,7 @@ describe('/GET cart', () => {
         chai.request(server).get('/api/cart').end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
-            res.body.length.should.be.eql(0);
+            expect(res.body).to.be.empty;
             done();
         });
     });

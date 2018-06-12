@@ -5,7 +5,7 @@ const app = express();
 app.use(express.static(__dirname));
 
 // {item: price}
-let catalog = {'cat': 10, 'dog': 15, 'tiger': 50, 'elephant': 80, 'shark': 120, 'dolphin': 110};
+const catalog = {'cat': 10, 'dog': 15, 'tiger': 50, 'elephant': 80, 'shark': 120, 'dolphin': 110};
 
 //{item: quantity}
 let orders = {};
@@ -20,9 +20,7 @@ app.get('/api/cart', (req, res) => res.send(cart));
 app.get('/api/orders', (req, res) => res.send(orders));
 
 //POST
-
-
-app.post('/api/catalog', (req, res) => {
+app.post('/api/cart', (req, res) => {
     const parsed = url.parse(req.url, true);
     console.log(parsed);
 
