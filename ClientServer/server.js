@@ -14,8 +14,13 @@ let orders = {};
 let cart = {};
 
 
-// catalog
+// GET
 app.get('/api/catalog', (req, res) => res.send(catalog));
+app.get('/api/cart', (req, res) => res.send(cart));
+app.get('/api/orders', (req, res) => res.send(orders));
+
+//POST
+
 
 app.post('/api/catalog', (req, res) => {
     const parsed = url.parse(req.url, true);
