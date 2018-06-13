@@ -1,8 +1,9 @@
-html{
+html {
     height: 100%;
     width: 100%;
 }
-body{
+
+body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -28,10 +29,7 @@ body{
     flex-grow: 1;
 }
 
-.logo {
-}
-
-.content{
+.content {
     padding-top: 150px;
     border-bottom: 1px solid #eff1f2;
     display: flex;
@@ -39,18 +37,21 @@ body{
     flex-wrap: nowrap;
     align-items: stretch;
     justify-content: flex-start;
-    flex-grow:1;
+    flex-grow: 1;
+    height: 100%;
 }
 
 .cart {
+    display: flex;
     flex-grow: 1;
     height: 100%;
-    border:yellow;
-
+    border: yellow;
+    flex-direction: column;
+    align-items: center;
 }
 
-.catalog{
+.catalog {
+    border-left: 1px solid #eff1f2;
     flex-grow: 3;
     height: 100%;
-    border:red;
 }
