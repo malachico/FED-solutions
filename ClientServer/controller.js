@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const server = require('server');
+const server = require('./server.js');
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json());       // to support JSON-encoded bodies

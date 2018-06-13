@@ -39,7 +39,6 @@ function addToCart(req) {
             cart[key] = incoming[key];
         }
     }
-
     return true;
 }
 
@@ -49,15 +48,13 @@ function checkout() {
     orders.push(clone);
     cart = {};
     return true;
-};
-
+}
 
 // Empty cart
 module.exports.reset = function () {
     cart = {};
     orders = [];
 };
-
 
 module.exports = {
     getCatalog: getCatalog,
