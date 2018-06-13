@@ -8,7 +8,7 @@ let expect = chai.expect;
 chai.use(chaiHttp);
 
 
-// Test the /GET route
+// Test the get catalog
 describe('/GET catalog', () => {
     it('it should GET catalog', (done) => {
         chai.request(server).get('/api/catalog').end((err, res) => {
