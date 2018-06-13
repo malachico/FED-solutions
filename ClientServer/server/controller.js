@@ -6,6 +6,10 @@ const server = require('./server.js');
 app.use(express.static(__dirname));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 
+app.all('/*', function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+});
+
 
 app.get('/api/catalog', (req, res) => res.send(server.getCatalog()));
 
