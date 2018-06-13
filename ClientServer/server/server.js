@@ -1,5 +1,11 @@
 // {item: price, ...}
-const catalog = {'cat': 10, 'dog': 15, 'tiger': 50, 'elephant': 80, 'shark': 120, 'dolphin': 110};
+const catalog =
+    {
+        'chameleon': 10, 'apatosaurus': 750000, 'cheetah': 50000,
+        'elephant': 80000, 'rhino': 120000, 'panda': 110000,
+        'whale': 10000, 'camel': 3500, 'dragon': 1000000,
+        'boar': 70000, 'chimera': 600000, 'electric_knifefish': 40000
+    };
 
 // [{item: quantity}, ...]
 let orders = [];
