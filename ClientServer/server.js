@@ -1,13 +1,5 @@
-const express = require('express');
-const url = require('url');
-const app = express();
-const bodyParser = require('body-parser');
-
-app.use(express.static(__dirname));
-app.use(bodyParser.json());       // to support JSON-encoded bodies
-
 // {item: price, ...}
-let catalog = {'cat': 10, 'dog': 15, 'tiger': 50, 'elephant': 80, 'shark': 120, 'dolphin': 110};
+const catalog = {'cat': 10, 'dog': 15, 'tiger': 50, 'elephant': 80, 'shark': 120, 'dolphin': 110};
 
 // [{item: quantity}, ...]
 let orders = [];
@@ -16,54 +8,61 @@ let orders = [];
 let cart = {};
 
 
-
-
 // GET
-app.get('/api/catalog', (req, res) => res.send(catalog));
+function getCatalog() {
+    return catalog;
+}
 
-app.get('/api/cart', (req, res) => res.send(cart));
+function getCart() {
+    return cart;
+}
 
-app.get('/api/orders', (req, res) => res.send(orders));
+function getOrders() {
+    return orders;
+}
+
 
 //POST
-app.post('/api/cart', (req, res) => {
+function addToCart(req) {
     let incoming = req.body;
 
     // Merge cart and incoming object
     for (let key in incoming) {
-        if(!key in catalog){
+        if (!key in catalog) {
             res.send(false);
         }
         // if key already exists - update
         if (key in cart) {
             cart[key] += incoming[key];
-        }else {
+        } else {
             // else - add it to cart
             cart[key] = incoming[key];
         }
     }
-    res.send(true);
 
-});
+    return true;
+}
 
 // PUT
-app.put('/api/checkout', (req, res) => {
+function checkout() {
     const clone = Object.assign({}, cart);
     orders.push(clone);
     cart = {};
-    res.send(true);
-});
+    return true;
+};
 
 
 // Empty cart
-module.exports.reset = function() {
+module.exports.reset = function () {
     cart = {};
     orders = [];
 };
 
 
-
-
-app.listen(3000, () => console.log('server listening on port 3000'));
-
-module.exports = app;
+module.exports = {
+    getCatalog: getCatalog,
+    getCart: getCart,
+    getOrders: getOrders,
+    addToCart: addToCart,
+    checkout: checkout
+};
