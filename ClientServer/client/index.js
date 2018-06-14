@@ -1,23 +1,13 @@
 const serverIP = 'localhost';
-const port = 3000;
+const serverPort = 3000;
+const protocol = "http";
+const url = protocol + "://"+serverIP +":"+serverPort+"/api/catalog";
 
-const url = 'http://' + serverIP + ":" + port;
-let catalogXhr = new XMLHttpRequest();
+let xhr = new XMLHttpRequest();
+xhr.open('GET', url, true);
+xhr.onload = function () {
+    console.log(xhr.responseText); // http://example.com/test
+};
+xhr.send(null);
 
-catalogXhr.open('GET', url+"/api/catalog", true);
-catalogXhr.responseType= 'json';
 
-
-
-function getCatalog() {
-    let xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            console.log("TEST!");
-        }
-    };
-    xhttp.open("GET", url+"/api/catalog", true);
-    xhttp.send();
-}
-getCatalog();
