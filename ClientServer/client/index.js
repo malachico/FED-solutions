@@ -13,26 +13,25 @@ xhr.onload = function () {
     let catalog = document.getElementById("catalog");
     let products = JSON.parse(xhr.responseText);
 
-    for(let key in products){
+    for (let key in products) {
         console.log(products[key]);
         // Product
         let productDiv = document.createElement("div");
         productDiv.classList.add("animal-box");
 
-        //description
+        // Description
         let productDescription = document.createElement("div");
         productDescription.classList.add("animal-description");
+        productDescription.innerHTML = key;
 
         // Button
-        let buttonNode = document.createElement("BUTTON");
+        let buttonNode = document.createElement("button");
         buttonNode.classList.add("box-button");
         buttonNode.innerText = products[key];
 
-        productDescription.innerHTML= key;
-
+        // Append children
         productDiv.appendChild(productDescription);
         productDiv.appendChild(buttonNode);
-
         catalog.appendChild(productDiv);
 
     }
