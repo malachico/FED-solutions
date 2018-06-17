@@ -15,12 +15,18 @@ describe('/GET catalog', () => {
             res.should.have.status(200);
             res.body.should.be.a('object');
             res.body.should.be.eql({
-                "cat": 10,
-                "dog": 15,
-                "dolphin": 110,
-                "elephant": 80,
-                "shark": 120,
-                "tiger": 50
+                "apatosaurus": 750000,
+                "boar": 70000,
+                "camel": 3500,
+                "chameleon": 10,
+                "cheetah": 50000,
+                "chimera": 600000,
+                "dragon": 1000000,
+                "electric_knifefish": 40000,
+                "elephant": 80000,
+                "panda": 110000,
+                "rhino": 120000,
+                "whale": 10000,
             });
             done();
         });

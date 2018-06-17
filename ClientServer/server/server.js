@@ -1,7 +1,7 @@
 // {item: price, ...}
 const catalog =
     {
-        'chameleon': 10, 'apatosaurus': 750000, 'cheetah': 50000,
+        'chameleon':10, 'apatosaurus': 750000, 'cheetah': 50000,
         'elephant': 80000, 'rhino': 120000, 'panda': 110000,
         'whale': 10000, 'camel': 3500, 'dragon': 1000000,
         'boar': 70000, 'chimera': 600000, 'electric_knifefish': 40000

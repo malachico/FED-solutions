@@ -56,14 +56,31 @@ body {
     height: 100%;
 
     display: grid;
-    grid-template-columns:1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
 
     justify-items: center;
     align-items: center;
 }
-.orders{
+
+.orders {
     display: flex;
     align-items: center;
     padding-left: 100px;
+}
+
+.animal-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.box-button {
+    color: #65c4ed;
+    flex-grow: 1;
+}
+
+.animal-description {
+    height: 100%;
+    width: 100%;
+    flex-grow: 4;
 }
