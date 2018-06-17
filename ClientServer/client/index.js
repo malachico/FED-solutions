@@ -14,7 +14,6 @@ xhr.onload = function () {
     let products = JSON.parse(xhr.responseText);
 
     for (let key in products) {
-        console.log(products[key]);
         // Product
         let productDiv = document.createElement("div");
         productDiv.classList.add("animal-box");
@@ -25,17 +24,57 @@ xhr.onload = function () {
         productDescription.innerHTML = key;
 
         // Button
-        let buttonNode = document.createElement("button");
-        buttonNode.classList.add("box-button");
-        buttonNode.innerText = products[key];
+        let productButton = document.createElement("button");
+        productButton.classList.add("box-button");
+        productButton.innerText = products[key];
+
+        productButton.onclick = function () {
+            addToCart(key, products[key]);
+        };
 
         // Append children
         productDiv.appendChild(productDescription);
-        productDiv.appendChild(buttonNode);
+        productDiv.appendChild(productButton);
         catalog.appendChild(productDiv);
 
     }
 };
+
+
+function updateCart() {
+    let cart = document.getElementById("cart");
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', url + "/api/cart", true);
+
+    xhr.onload = function () {
+        cart.innerHTML = xhr.responseText;
+    };
+
+    xhr.send(null);
+}
+
+function addToCart(product, price) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('POST', url + "/api/cart", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function() {//Call a function when the state changes.
+        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            updateCart();
+        }
+    };
+
+
+    xhr.send("product="+product+"&price="+price);
+
+    // let cart = document.getElementById("cart");
+    //
+    // cart.innerHTML += key + ":" + price + "<br>";
+
+}
 
 xhr.send(null);
 
