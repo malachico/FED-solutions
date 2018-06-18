@@ -1,125 +1,66 @@
-const serverIP = 'localhost';
-const serverPort = 3000;
-const protocol = "http";
-const url = protocol + "://" + serverIP + ":" + serverPort;
 
-
-// populate cart
+// Update components
 window.onload =function () {
-    populateGrid();
-    updateCart();
-
-    // todo: update orders
+    getCatalog(updateCatalog);
+    getCart(updateCart);
+    getOrders(updateOrders);
 };
 
 
 
-function populateGrid () {
+function updateCatalog (products) {
+    let catalog = document.getElementById("catalog");
 
-    let xhr = new XMLHttpRequest();
+    for (let key in products) {
+        // Product
+        let productDiv = document.createElement("div");
+        productDiv.classList.add("animal-box");
 
-    xhr.open('GET', url + "/api/catalog", true);
+        // Description
+        let productDescription = document.createElement("div");
+        productDescription.classList.add("animal-description");
+        productDescription.innerHTML = key;
 
-    xhr.onload = function () {
-        let catalog = document.getElementById("catalog");
-        let products = JSON.parse(xhr.responseText);
+        // Button
+        let productButton = document.createElement("button");
+        productButton.classList.add("box-button");
+        productButton.innerText = products[key];
 
-        for (let key in products) {
-            // Product
-            let productDiv = document.createElement("div");
-            productDiv.classList.add("animal-box");
+        productButton.onclick = function () {
+            addToCart(key);
+        };
 
-            // Description
-            let productDescription = document.createElement("div");
-            productDescription.classList.add("animal-description");
-            productDescription.innerHTML = key;
-
-            // Button
-            let productButton = document.createElement("button");
-            productButton.classList.add("box-button");
-            productButton.innerText = products[key];
-
-            productButton.onclick = function () {
-                addToCart(key);
-            };
-
-            // Append children
-            productDiv.appendChild(productDescription);
-            productDiv.appendChild(productButton);
-            catalog.appendChild(productDiv);
-
-        }
-    };
-    xhr.send(null);
-
+        // Append children
+        productDiv.appendChild(productDescription);
+        productDiv.appendChild(productButton);
+        catalog.appendChild(productDiv);
+    }
 }
 
-
-function updateCart() {
+function updateCart(cartObj){
     let shopList = document.getElementById("shop-list");
 
-    let xhr = new XMLHttpRequest();
+    let content = '';
 
-    xhr.open('GET', url + "/api/cart", true);
+    for (let key in cartObj) {
+        content += key + " : \t " + cartObj[key] + "<br>";
+    }
 
-    xhr.onload = function () {
-        let content = '';
-
-        let cartObj = JSON.parse(xhr.responseText);
-
-        for (let key in cartObj) {
-            content += key + " : \t " + cartObj[key] + "<br>";
-        }
-
-        shopList.innerHTML = content;
-
-
-    };
-
-    xhr.send(null);
+    shopList.innerHTML = content;
 }
 
-function addToCart(product) {
-    let xhr = new XMLHttpRequest();
+function updateOrders (ordersObj){
+    for (let key in ordersObj) {
+        let orderDiv = document.createElement("div");
+        orderDiv.classList.add("tooltip");
 
-    xhr.open('POST', url + "/api/cart", true);
+        let tooltipText = document.createElement("span");
+        tooltipText.classList.add("tooltipText");
+        tooltipText.innerHTML = ordersObj[key];
 
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            updateCart();
-        }
-    };
-
-    xhr.send("product=" + product);
-}
-
-function updateOrders (){
-    let ordersList = document.getElementById("orders-list");
-
-    let xhr = new XMLHttpRequest();
-
-    xhr.open('GET', url + "/api/orders", true);
-
-    xhr.onload = function () {
-
-        let ordersObj = JSON.parse(xhr.responseText);
-
-        for (let key in ordersObj) {
-            let orderDiv = document.createElement("div");
-            orderDiv.classList.add("tooltip");
-
-            let tooltipText = document.createElement("span");
-            tooltipText.classList.add("tooltipText");
-            tooltipText.innerHTML = ordersObj[key];
-
-            orderDiv.appendChild(orderDiv);
-            orderDiv.appendChild(tooltipText);
-        }
-    };
-
-    xhr.send(null);
+        orderDiv.appendChild(orderDiv);
+        orderDiv.appendChild(tooltipText);
+    }
 
 }
 
