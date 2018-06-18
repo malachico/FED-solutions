@@ -4,41 +4,55 @@ const protocol = "http";
 const url = protocol + "://" + serverIP + ":" + serverPort;
 
 
-// Populate grid
-let xhr = new XMLHttpRequest();
+// populate cart
+window.onload =function () {
+    populateGrid();
+    updateCart();
 
-xhr.open('GET', url + "/api/catalog", true);
-
-xhr.onload = function () {
-    let catalog = document.getElementById("catalog");
-    let products = JSON.parse(xhr.responseText);
-
-    for (let key in products) {
-        // Product
-        let productDiv = document.createElement("div");
-        productDiv.classList.add("animal-box");
-
-        // Description
-        let productDescription = document.createElement("div");
-        productDescription.classList.add("animal-description");
-        productDescription.innerHTML = key;
-
-        // Button
-        let productButton = document.createElement("button");
-        productButton.classList.add("box-button");
-        productButton.innerText = products[key];
-
-        productButton.onclick = function () {
-            addToCart(key, products[key]);
-        };
-
-        // Append children
-        productDiv.appendChild(productDescription);
-        productDiv.appendChild(productButton);
-        catalog.appendChild(productDiv);
-
-    }
+    // todo: update orders
 };
+
+
+
+function populateGrid () {
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', url + "/api/catalog", true);
+
+    xhr.onload = function () {
+        let catalog = document.getElementById("catalog");
+        let products = JSON.parse(xhr.responseText);
+
+        for (let key in products) {
+            // Product
+            let productDiv = document.createElement("div");
+            productDiv.classList.add("animal-box");
+
+            // Description
+            let productDescription = document.createElement("div");
+            productDescription.classList.add("animal-description");
+            productDescription.innerHTML = key;
+
+            // Button
+            let productButton = document.createElement("button");
+            productButton.classList.add("box-button");
+            productButton.innerText = products[key];
+
+            productButton.onclick = function () {
+                addToCart(key);
+            };
+
+            // Append children
+            productDiv.appendChild(productDescription);
+            productDiv.appendChild(productButton);
+            catalog.appendChild(productDiv);
+
+        }
+    };
+    xhr.send(null);
+
+}
 
 
 function updateCart() {
@@ -65,7 +79,7 @@ function updateCart() {
     xhr.send(null);
 }
 
-function addToCart(product, price) {
+function addToCart(product) {
     let xhr = new XMLHttpRequest();
 
     xhr.open('POST', url + "/api/cart", true);
@@ -81,5 +95,38 @@ function addToCart(product, price) {
     xhr.send("product=" + product);
 }
 
-xhr.send(null);
+function updateOrders (){
+    let ordersList = document.getElementById("orders-list");
 
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', url + "/api/orders", true);
+
+    xhr.onload = function () {
+
+        let ordersObj = JSON.parse(xhr.responseText);
+
+        for (let key in ordersObj) {
+            let orderDiv = document.createElement("div");
+            orderDiv.classList.add("tooltip");
+
+            let tooltip = document.createElement("span");
+            tooltip.innerHTML = ordersObj[key];
+
+            orderDiv.appendChild(orderDiv);
+            orderDiv.appendChild(tooltip);
+        }
+    };
+
+    xhr.send(null);
+
+}
+
+
+function checkout(){
+    // send checkout to server
+
+    //update cart
+
+    // update orders
+}
