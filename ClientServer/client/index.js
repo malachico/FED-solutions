@@ -37,38 +37,40 @@ function updateCatalog (products) {
     }
 }
 
-function updateCart(cartObj){
-    let shopList = document.getElementById("shop-list");
-
+function objToString(cartObj) {
     let content = '';
 
     for (let key in cartObj) {
         content += key + " : \t " + cartObj[key] + "<br>";
     }
+    return content;
+}
+
+function updateCart(cartObj){
+    let shopList = document.getElementById("shop-list");
+
+    let content = objToString(cartObj);
 
     shopList.innerHTML = content;
 }
 
 function updateOrders (ordersObj){
+
+    let ordersList = document.getElementById("orders-list");
+
     for (let key in ordersObj) {
+        console.log(ordersObj[key]);
         let orderDiv = document.createElement("div");
         orderDiv.classList.add("tooltip");
+        orderDiv.innerHTML = "order "+ key;
 
         let tooltipText = document.createElement("span");
-        tooltipText.classList.add("tooltipText");
-        tooltipText.innerHTML = ordersObj[key];
+        tooltipText.classList.add("tooltiptext");
+        tooltipText.innerHTML = objToString(ordersObj[key]);
 
-        orderDiv.appendChild(orderDiv);
+        ordersList.appendChild(orderDiv);
         orderDiv.appendChild(tooltipText);
     }
 
 }
 
-
-function checkout(){
-    // send checkout to server
-
-    //update cart
-
-    // update orders
-}

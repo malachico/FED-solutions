@@ -65,7 +65,17 @@ function getOrders(callback) {
     xhr.send(null);
 }
 
-function checkout() {
 
+function checkout() {
+    let xhr = new XMLHttpRequest();
+
+    // send checkout to server
+    xhr.open('PUT', url + "/api/checkout", true);
+
+    xhr.onload = function () {
+        let ordersObj = JSON.parse(xhr.responseText);
+        updateOrders(ordersObj)
+    };
 }
+
 
