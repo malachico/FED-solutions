@@ -9,6 +9,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    font-family: HelveticaNeueW01-45Ligh,Helvetica Neue,Arial,Helvetica,sans-serif;
 }
 
 .page {
@@ -83,4 +84,10 @@ body {
     height: 100%;
     width: 100%;
     flex-grow: 4;
+}
+
+.shop-list {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #707070;
 }

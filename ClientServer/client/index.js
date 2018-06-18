@@ -42,14 +42,24 @@ xhr.onload = function () {
 
 
 function updateCart() {
-    let cart = document.getElementById("cart");
+    let shopList = document.getElementById("shop-list");
 
     let xhr = new XMLHttpRequest();
 
     xhr.open('GET', url + "/api/cart", true);
 
     xhr.onload = function () {
-        cart.innerHTML = xhr.responseText;
+        let content = '';
+
+        let cartObj = JSON.parse(xhr.responseText);
+
+        for (let key in cartObj) {
+            content += key + " : \t " + cartObj[key] + "<br>";
+        }
+
+        shopList.innerHTML = content;
+
+
     };
 
     xhr.send(null);
@@ -68,7 +78,7 @@ function addToCart(product, price) {
         }
     };
 
-    xhr.send("product="+product);
+    xhr.send("product=" + product);
 }
 
 xhr.send(null);
