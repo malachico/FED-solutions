@@ -34,15 +34,16 @@ function addToCart(req) {
 
     // Merge cart and incoming object
     for (let key in incoming) {
-        if (!key in catalog) {
+        let product = incoming[key];
+        if (!product in catalog) {
             res.send(false);
         }
-        // if key already exists - update
-        if (key in cart) {
-            cart[key] += incoming[key];
+        // if product already exists - update
+        if (product in cart) {
+            cart[product] += 1;
         } else {
             // else - add it to cart
-            cart[key] = incoming[key];
+            cart[product] = 1;
         }
     }
     return true;

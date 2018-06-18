@@ -59,21 +59,16 @@ function addToCart(product, price) {
     let xhr = new XMLHttpRequest();
 
     xhr.open('POST', url + "/api/cart", true);
+
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhr.onreadystatechange = function() {//Call a function when the state changes.
-        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
             updateCart();
         }
     };
 
-
-    xhr.send("product="+product+"&price="+price);
-
-    // let cart = document.getElementById("cart");
-    //
-    // cart.innerHTML += key + ":" + price + "<br>";
-
+    xhr.send("product="+product);
 }
 
 xhr.send(null);
