@@ -69,13 +69,14 @@ function getOrders(callback) {
 function checkout() {
     let xhr = new XMLHttpRequest();
 
-    // send checkout to server
-    xhr.open('PUT', url + "/api/checkout", true);
+    xhr.open('POST', url + "/api/checkout", true);
 
     xhr.onload = function () {
+        console.log(xhr.responseText);
         let ordersObj = JSON.parse(xhr.responseText);
         updateOrders(ordersObj)
     };
+    xhr.send("");
 }
 
 

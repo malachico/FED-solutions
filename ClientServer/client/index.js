@@ -1,9 +1,13 @@
+function addEventListeners() {
+    document.getElementById("checkout-button").addEventListener("click", checkout);
+}
 
 // Update components
 window.onload =function () {
     getCatalog(updateCatalog);
     getCart(updateCart);
     getOrders(updateOrders);
+    addEventListeners();
 };
 
 
@@ -57,9 +61,9 @@ function updateCart(cartObj){
 function updateOrders (ordersObj){
 
     let ordersList = document.getElementById("orders-list");
+    ordersList.innerHTML = '';
 
     for (let key in ordersObj) {
-        console.log(ordersObj[key]);
         let orderDiv = document.createElement("div");
         orderDiv.classList.add("tooltip");
         orderDiv.innerHTML = "order "+ key;
@@ -67,6 +71,7 @@ function updateOrders (ordersObj){
         let tooltipText = document.createElement("span");
         tooltipText.classList.add("tooltiptext");
         tooltipText.innerHTML = objToString(ordersObj[key]);
+
 
         ordersList.appendChild(orderDiv);
         orderDiv.appendChild(tooltipText);

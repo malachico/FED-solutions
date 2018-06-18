@@ -53,10 +53,23 @@ function isEmpty(obj) {
     return Object.keys(obj).length === 0;
 }
 
+function calcTotal(clone) {
+    let toCalc = Object.assign({}, cart);
+
+    Object.keys(toCalc).map(function (key, index) {
+        let qty = toCalc[key];
+        toCalc[key] = qty * catalog[key];
+    });
+
+    return Object.values(toCalc).reduce((a, b) => a + b);
+}
+
 // PUT
 function checkout() {
     if (!isEmpty(cart)) {
-        const clone = Object.assign({}, cart);
+        let clone = Object.assign({}, cart);
+        let total = calcTotal(clone);
+        clone['total'] = total;
         orders.push(clone);
         cart = {};
     }

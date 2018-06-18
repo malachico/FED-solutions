@@ -20,7 +20,7 @@ app.get('/api/orders', (req, res) => res.send(server.getOrders()));
 
 app.post('/api/cart', (req, res) => res.send(server.addToCart(req)));
 
-app.put('/api/checkout', (req, res) => res.send(server.checkout()));
+app.post('/api/checkout', (req, res) => res.send(server.checkout()));
 
 app.listen(3000, () => console.log('server listening on port 3000'));
 
