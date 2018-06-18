@@ -110,11 +110,12 @@ function updateOrders (){
             let orderDiv = document.createElement("div");
             orderDiv.classList.add("tooltip");
 
-            let tooltip = document.createElement("span");
-            tooltip.innerHTML = ordersObj[key];
+            let tooltipText = document.createElement("span");
+            tooltipText.classList.add("tooltipText");
+            tooltipText.innerHTML = ordersObj[key];
 
             orderDiv.appendChild(orderDiv);
-            orderDiv.appendChild(tooltip);
+            orderDiv.appendChild(tooltipText);
         }
     };
 
