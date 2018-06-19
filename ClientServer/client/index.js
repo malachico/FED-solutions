@@ -5,7 +5,6 @@ function addEventListeners() {
 // Update components
 window.onload = function () {
     getCatalog(updateCatalog);
-    getCatalogImages(updateCatalogImages);
     getCart(updateCart);
     getOrders(updateOrders);
     addEventListeners();
