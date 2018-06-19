@@ -74,7 +74,8 @@ function checkout() {
     xhr.onload = function () {
         console.log(xhr.responseText);
         let ordersObj = JSON.parse(xhr.responseText);
-        updateOrders(ordersObj)
+        updateOrders(ordersObj);
+        getCart(updateCart);
     };
     xhr.send("");
 }
