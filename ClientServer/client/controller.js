@@ -17,6 +17,18 @@ function getCatalog(callback) {
     xhr.send(null);
 }
 
+function getCatalogImages(callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', url + "/api/getCatalogImages", true);
+
+    xhr.onload = function () {
+        let images = JSON.parse(xhr.responseText);
+        callback(images);
+    };
+
+    xhr.send(null);
+}
 
 function getCart(callback) {
 

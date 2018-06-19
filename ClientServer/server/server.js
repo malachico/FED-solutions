@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // {item: price, ...}
 const catalog =
     {
@@ -18,6 +20,7 @@ let cart = {};
 function getCatalog() {
     return catalog;
 }
+
 
 function getCart() {
     return cart;

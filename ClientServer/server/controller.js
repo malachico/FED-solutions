@@ -5,12 +5,14 @@ const server = require('./server.js');
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded body
+app.use(bodyParser.urlencoded({extended: true})); // support encoded body
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
 });
+
+app.use(express.static(__dirname + '/animals'));
 
 app.get('/api/catalog', (req, res) => res.send(server.getCatalog()));
 

@@ -3,27 +3,27 @@ function addEventListeners() {
 }
 
 // Update components
-window.onload =function () {
+window.onload = function () {
     getCatalog(updateCatalog);
+    getCatalogImages(updateCatalogImages);
     getCart(updateCart);
     getOrders(updateOrders);
     addEventListeners();
 };
 
 
-
-function updateCatalog (products) {
+function updateCatalog(products) {
     let catalog = document.getElementById("catalog");
 
     for (let key in products) {
         // Product
         let productDiv = document.createElement("div");
+        productDiv.id = key;
         productDiv.classList.add("animal-box");
 
-        // Description
-        let productDescription = document.createElement("div");
-        productDescription.classList.add("animal-description");
-        productDescription.innerHTML = key;
+        // Picture
+        let productPic = document.createElement("img");
+        productPic.src = url + '/animals/' + key + ".png";
 
         // Button
         let productButton = document.createElement("button");
@@ -35,10 +35,14 @@ function updateCatalog (products) {
         };
 
         // Append children
-        productDiv.appendChild(productDescription);
+        productDiv.appendChild(productPic);
         productDiv.appendChild(productButton);
         catalog.appendChild(productDiv);
     }
+}
+
+function updateCatalogImages(images) {
+
 }
 
 function objToString(cartObj) {
@@ -50,15 +54,13 @@ function objToString(cartObj) {
     return content;
 }
 
-function updateCart(cartObj){
+function updateCart(cartObj) {
     let shopList = document.getElementById("shop-list");
 
-    let content = objToString(cartObj);
-
-    shopList.innerHTML = content;
+    shopList.innerHTML = objToString(cartObj);
 }
 
-function updateOrders (ordersObj){
+function updateOrders(ordersObj) {
 
     let ordersList = document.getElementById("orders-list");
     ordersList.innerHTML = '';
@@ -66,12 +68,11 @@ function updateOrders (ordersObj){
     for (let key in ordersObj) {
         let orderDiv = document.createElement("div");
         orderDiv.classList.add("tooltip");
-        orderDiv.innerHTML = "order "+ key;
+        orderDiv.innerHTML = "order " + key;
 
         let tooltipText = document.createElement("span");
         tooltipText.classList.add("tooltiptext");
         tooltipText.innerHTML = objToString(ordersObj[key]);
-
 
         ordersList.appendChild(orderDiv);
         orderDiv.appendChild(tooltipText);
