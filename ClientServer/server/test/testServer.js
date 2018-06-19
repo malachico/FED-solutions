@@ -61,20 +61,20 @@ describe('simple usage', () => {
     // Add item to cart
     describe('/POST cart', () => {
         it('it should POST item to cart', (done) => {
-            chai.request(server).post('/api/cart').send({"dolphin": 1}).end((err, res) => {
+            chai.request(server).post('/api/cart').send({"product": "panda"}).end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
         });
     });
 
-    // Cart now should contain 1 dolphin
+    // Cart now should contain 1 panda
     describe('/GET cart', () => {
         it('it should GET cart', (done) => {
             chai.request(server).get('/api/cart').end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
-                expect(res.body).to.be.eql({'dolphin': 1});
+                expect(res.body).to.be.eql({'panda': 1});
                 done();
             });
         });
@@ -83,9 +83,9 @@ describe('simple usage', () => {
     // Commit checkout
     describe('/PUT checkout', () => {
         it('it should PUT items from cart to orders', (done) => {
-            chai.request(server).put('/api/checkout').end((err, res) => {
+            chai.request(server).post('/api/checkout').end((err, res) => {
                 res.should.have.status(200);
-                res.body.should.be.true;
+                res.body.should.be.eql([{'panda': 1, 'total': 110000}]);
                 done();
             });
         });
@@ -109,7 +109,7 @@ describe('simple usage', () => {
             chai.request(server).get('/api/orders').end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('array');
-                res.body[0].should.be.eql({'dolphin': 1});
+                res.body[0].should.be.eql({'panda': 1, 'total': 110000});
                 done();
             });
         });
@@ -133,20 +133,20 @@ describe('add same item to cart', () => {
     // Add item to cart
     describe('/POST cart', () => {
         it('it should POST item to cart', (done) => {
-            chai.request(server).post('/api/cart').send({"dolphin": 1}).end((err, res) => {
+            chai.request(server).post('/api/cart').send({"product": "panda"}).end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
         });
     });
 
-    // Cart now should contain 1 dolphin
+    // Cart now should contain 1 panda
     describe('/GET cart', () => {
         it('it should GET cart', (done) => {
             chai.request(server).get('/api/cart').end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
-                expect(res.body).to.be.eql({'dolphin': 1});
+                expect(res.body).to.be.eql({'panda': 1});
                 done();
             });
         });
@@ -155,20 +155,20 @@ describe('add same item to cart', () => {
     // Add same item to cart
     describe('/POST cart', () => {
         it('it should POST item to cart', (done) => {
-            chai.request(server).post('/api/cart').send({"dolphin": 1}).end((err, res) => {
+            chai.request(server).post('/api/cart').send({"product": "panda"}).end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
         });
     });
 
-    // Cart now should contain 2 dolphins
+    // Cart now should contain 2 pandas
     describe('/GET cart', () => {
         it('it should GET cart', (done) => {
             chai.request(server).get('/api/cart').end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
-                expect(res.body).to.be.eql({'dolphin': 2});
+                expect(res.body).to.be.eql({'panda': 2});
                 done();
             });
         });
@@ -178,13 +178,13 @@ describe('add same item to cart', () => {
 
 
 describe('add distinct items to cart', () => {
-    // Cart now should contain 2 dolphins
+    // Cart now should contain 2 pandas
     describe('/GET cart', () => {
         it('it should GET cart', (done) => {
             chai.request(server).get('/api/cart').end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
-                expect(res.body).to.be.eql({'dolphin': 2});
+                expect(res.body).to.be.eql({'panda': 2});
                 done();
             });
         });
@@ -193,20 +193,20 @@ describe('add distinct items to cart', () => {
     // Add same item to cart
     describe('/POST cart', () => {
         it('it should POST item to cart', (done) => {
-            chai.request(server).post('/api/cart').send({"tiger": 1}).end((err, res) => {
+            chai.request(server).post('/api/cart').send({"product": "tiger"}).end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
         });
     });
 
-    // Cart now should contain 2 dolphins
+    // Cart now should contain 2 pandas
     describe('/GET cart', () => {
         it('it should GET cart', (done) => {
             chai.request(server).get('/api/cart').end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
-                expect(res.body).to.be.eql({'dolphin': 2, 'tiger': 1});
+                expect(res.body).to.be.eql({'panda': 2, 'tiger': 1});
                 done();
             });
         });
