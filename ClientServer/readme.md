@@ -19,7 +19,7 @@ This project already contains empty files:
 #solution:
 ###desing: 
  
-![](utils/client-server.png)
+![](client/utils/client-server.png)
 ### Server side:
 #### server:
 The logic layer of the server, holds the data as well.  
