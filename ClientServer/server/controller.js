@@ -13,11 +13,6 @@ let options = {
 
 app.use('/', express.static('../client/', options));
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
-});
-
 app.use(express.static(__dirname + '/animals'));
 
 app.get('/api/catalog', (req, res) => res.send(server.getCatalog()));
