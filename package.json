@@ -4,6 +4,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "npm": "^6.1.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "superagent": "^3.8.3",
     "through2-map": "latest"
   },
