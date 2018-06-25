@@ -7,7 +7,7 @@ import Board from "./Board";
 
 class Game extends React.Component{
     render(){
-        return <Board width={10} height={10} mines={30}/>;
+        return <Board classname="board" width={10} height={10} mines={30}/>;
     }
 }
 

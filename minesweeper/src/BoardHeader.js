@@ -1,4 +1,6 @@
 import React from 'react';
+import BombsCounter from "./BombsCounter";
+import TimeAndMovesCounter from "./TimeAndMovesCounter";
 
 
 export default class BoardHeader extends React.Component {
@@ -8,9 +10,9 @@ export default class BoardHeader extends React.Component {
 
     render() {
         return (
-            <div>
-                <BombsCounter/>
-                <TimeAndMovesCounter/>
+            <div className="counters">
+                <BombsCounter classname="bombs-counter"/>
+                <TimeAndMovesCounter classname="time-counter"/>
             </div>
         );
     }
