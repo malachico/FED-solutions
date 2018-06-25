@@ -1,20 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import BoardHeader from "./BoardHeader";
 
 
-class Board extends React.Component {
-    constructor(props){
+export default class Board extends React.Component {
+    constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             width: props.width,
             height: props.height,
             mines: props.mines,
         }
     }
 
-
     render() {
-
+        return <BoardHeader mines={this.state.mines}/>;
     }
 }
