@@ -7,6 +7,6 @@ export default class BombsCounter extends React.Component {
     }
 
     render() {
-
+        return <h2>bombs counter</h2>
     }
 }
