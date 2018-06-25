@@ -12,8 +12,8 @@ export default class Board extends React.Component {
     render() {
         return (
             <div className="board">
-                <BoardHeader className="board-header"/>
-                <SquaresBoard className="squares-board"/>
+                <BoardHeader className="board-header" mines={this.props.mines}/>
+                <SquaresBoard className="squares-board" width={this.props.width} height={this.props.height}/>
             </div>
         );
     }
