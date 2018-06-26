@@ -17,7 +17,7 @@ export default class SquaresBoard extends React.Component {
         for (let i = 0; i < this.props.height; i++) {
             let children = [];
             for (let j = 0; j < this.props.width; j++) {
-                children.push(<Square className="square" width={j} height={i}/>)
+                children.push(<Square width={i} height={j} value={null} handleClick={this.props.handleClick}/>)
             }
             table.push(<tr>{children}</tr>)
         }

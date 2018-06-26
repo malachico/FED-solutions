@@ -8,6 +8,13 @@ export default class Square extends React.Component {
     }
 
     render(){
-        return <span className="square">{this.props.width},{this.props.height}    </span>
+
+
+        return (
+        <button className="square" onClick={()=>this.props.handleClick(this.props.width, this.props.height)}>
+            {this.props.value}
+        </button>
+        );
+
     }
 }

@@ -9,11 +9,15 @@ export default class Board extends React.Component {
         super(props);
     }
 
+    handleClick(i,j){
+        console.log(i,j);
+    }
+
     render() {
         return (
             <div className="board">
                 <BoardHeader className="board-header" mines={this.props.mines}/>
-                <SquaresBoard className="squares-board" width={this.props.width} height={this.props.height}/>
+                <SquaresBoard className="squares-board" width={this.props.width} height={this.props.height} handleClick={this.handleClick}/>
             </div>
         );
     }
