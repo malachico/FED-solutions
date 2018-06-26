@@ -19,7 +19,6 @@ export default class Board extends React.Component {
 
     createTable = () => {
         let table = [];
-
         for (let i = 0; i < this.props.height; i++) {
             let children = [];
             for (let j = 0; j < this.props.width; j++) {
@@ -30,6 +29,7 @@ export default class Board extends React.Component {
                     isBomb: false,
                     number: 0,
                     isFlagged: false,
+                    value: null,
                     handleClick: this.handleClick
                 };
 
@@ -42,16 +42,45 @@ export default class Board extends React.Component {
         return table
     };
 
-    handleClick(i, j) {
+    handleClick(e, i, j) {
+
+        let clicked = this.state.squares[i].props.children[j].props;
+        console.log();
+
+        // if revealed : return
+        if(clicked['isRevealed']){
+            return;
+        }
+
+        // if right click return flag / un flag
+        if (e.type === 'contextmenu'){
+            let sProps = Object.assign({isFlagged: true}, clicked);
+
+            //     {
+            //     i: i,
+            //     j: j,
+            //     isRevealed: false,
+            //     isBomb: false,
+            //     number: 0,
+            //     isFlagged: true,
+            //     value: null,
+            //     handleClick: this.handleClick
+            // };
+            sProps[''] = true;
+            this.state.squares[i].props.children[j]= <Square {...sProps}/>;
+
+            console.log(this.state.squares[i].props.children[j].props);
+
+            return;
+        }
+
         // update moves
         this.setState({moves: this.state.moves + 1});
-        // if revealed : return
-        // if right click return flag / un flag
+
         // if bomb : return exploded
         // if number - return number
 
-        let clicked = this.state.squares[i].props.children[j];
-        // console.log(clicked.props);
+        // console.log(clicked);
     }
 
     render() {
