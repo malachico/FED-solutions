@@ -8,16 +8,13 @@ export default class TimeAndMovesCounter extends React.Component {
         this.switchDisplay = this.switchDisplay.bind(this);
 
         this.state = {
-            startTime: new Date().getSeconds(),
+            timePassed: 0,
             current: 1
         };
     }
 
     componentDidMount() {
-        this.timerID = setInterval(
-            () => this.tick(),
-            1000
-        );
+        this.timerID = setInterval(() => this.tick(), 1000);
     }
 
     componentWillUnmount() {
@@ -25,25 +22,19 @@ export default class TimeAndMovesCounter extends React.Component {
     }
 
     tick() {
-        this.setState({
-            date: new Date()
-        });
+        this.setState({timePassed: this.state.timePassed + 1});
     }
 
-    switchDisplay(){
+    switchDisplay() {
         this.setState({current: this.state.current ^ 1});
     }
 
-
     render() {
-        if (this.state.current){
-            return <button onClick={()=>this.switchDisplay()}>{this.props.moves}</button>
-        }else{
-            return <button onClick={()=>this.switchDisplay()}>
-                <span>{new Date().getSeconds() - this.state.startTime}</span>
-            </button>
-
+        if (this.state.current) {
+            return <button onClick={() => this.switchDisplay()}>{this.props.moves}</button>
         }
-
+        return <button onClick={() => this.switchDisplay()}>
+            <span>{this.state.timePassed}</span>
+        </button>
     }
 }
