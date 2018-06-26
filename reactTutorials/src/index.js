@@ -43,8 +43,6 @@ class Board extends React.Component {
             squares: squares,
         });
 
-
-
     }
 
     renderSquare(i) {
