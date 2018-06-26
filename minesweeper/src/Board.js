@@ -6,13 +6,16 @@ import Square from "./Square";
 
 
 export default class Board extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state ={
-            squares: this.createTable()
-        }
-    }
 
+        this.handleClick = this.handleClick.bind(this);
+
+        this.state = {
+            moves: 0,
+            squares: this.createTable()
+        };
+    }
 
     createTable = () => {
         let table = [];
@@ -20,8 +23,18 @@ export default class Board extends React.Component {
         for (let i = 0; i < this.props.height; i++) {
             let children = [];
             for (let j = 0; j < this.props.width; j++) {
+                let squareProps = {
+                    i: i,
+                    j: j,
+                    isRevealed: false,
+                    isBomb: false,
+                    number: 0,
+                    isFlagged: false,
+                    handleClick: this.handleClick
+                };
+
                 // Push new cell
-                children.push(<Square width={i} height={j} value={null} handleClick={this.handleClick}/>)
+                children.push(<Square {...squareProps}/>);
             }
             // Push new row
             table.push(<tr>{children}</tr>)
@@ -29,40 +42,25 @@ export default class Board extends React.Component {
         return table
     };
 
-    handleClick(i,j){
-        //todo: add logic
-        console.log(i,j);
+    handleClick(i, j) {
+        // update moves
+        this.setState({moves: this.state.moves + 1});
+        // if revealed : return
+        // if right click return flag / un flag
+        // if bomb : return exploded
+        // if number - return number
+
+        let clicked = this.state.squares[i].props.children[j];
+        // console.log(clicked.props);
     }
 
     render() {
         return (
             <div className="board">
-                <BoardHeader className="board-header" mines={this.props.mines}/>
-                <SquaresBoard className="squares-board" width={this.props.width} height={this.props.height} squares={this.state.squares} handleClick={this.handleClick}/>
+                <BoardHeader className="board-header" mines={this.props.mines} moves={this.state.moves}/>
+                <SquaresBoard className="squares-board" width={this.props.width} height={this.props.height}
+                              squares={this.state.squares} handleClick={this.handleClick}/>
             </div>
         );
     }
-
-    //
-    // handleClick(i) {
-    //     if (this.state.squares[i] !== null) {
-    //         return;
-    //     }
-    //
-    //     const squares = this.state.squares.slice();
-    //
-    //     if (calculateWinner(squares) || squares[i]) {
-    //         return;
-    //     }
-    //
-    //     squares[i] = this.getCurrentPlayer();
-    //
-    //     this.xIsNext = !this.xIsNext;
-    //
-    //     this.setState({
-    //         squares: squares,
-    //     });
-    //
-    // }
-
 }
