@@ -97,7 +97,12 @@ class Game extends React.Component {
 
         this.setState({
             squares: squares,
+            moves: this.state.moves+1
         });
+
+        if(this.checkIfWin(squares)){
+            this.setState({win: 1});
+        }
     }
 
     putMines(i, j, squares) {
@@ -136,7 +141,6 @@ class Game extends React.Component {
             </div>
         );
     }
-
 
     putNumbers(squares) {
         for (let i = 0; i < squares.length; i++) {
@@ -194,6 +198,17 @@ class Game extends React.Component {
 
             }
         }
+    }
+
+    checkIfWin(squares) {
+        for (let i = 0; i < squares.length; i++) {
+            for (let j = 0; j < squares[0].length; j++) {
+                if(!squares[i][j]['bomb'] && !squares[i][j]['revealed']){
+                    return false
+                }
+            }
+        }
+        return true;
     }
 }
 
