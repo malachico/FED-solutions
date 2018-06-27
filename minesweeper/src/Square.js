@@ -1,33 +1,37 @@
 import React from 'react';
-import './css/board-header.css';
-
+import './css/square.css';
+import flag from "./utils/flag.jpg";
 
 export default class Square extends React.Component {
     render() {
-        return (
-            <button className="square" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
-                    onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
-                {this.putIcon(this.props.data)}
 
+        if (!this.props.data['revealed']) {
+            if (this.props.data['flagged']) {
+                return (<button className="flag">
+                        <img src={flag} onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
+                             onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}/>
+                    </button>
+                );
+            }
+            return (<button className="square" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
+                            onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
+                    {this.props.data['number']}
+                </button>
+            );
+        }
 
+        if (this.props.data['bomb']) {
+            return (
+                <button className="opened square" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
+                        onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
+                    {"b"}
+                </button>
+            );
+        }
+        return (<button className="opened square" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
+                        onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
+                {this.props.data['number']}
             </button>
         );
-
-    }
-
-    putIcon(data) {
-        if(data['number']){
-            return data['number'];
-        }
-        if (data['flagged']) {
-            return 'f';
-        }
-        if (!data['revealed']) {
-            return ' ';
-        }
-        if(data['bomb']){
-            return 'b';
-        }
-
     }
 }

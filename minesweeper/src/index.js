@@ -18,7 +18,7 @@ class Game extends React.Component {
             flags: 0,
             height: 10,
             width: 10,
-            mines: 30,
+            mines: 2,
             squares: this.createSquaresArray()
         };
     }
@@ -41,7 +41,6 @@ class Game extends React.Component {
         return result;
     }
 
-
     renderSquare(i, j) {
         return (
             <Square
@@ -53,11 +52,9 @@ class Game extends React.Component {
         );
     }
 
-
     getRandInRange(max) {
         return Math.floor(Math.random() * (max));
     }
-
 
     handleClick(e, i, j) {
         if (!this.state.started) {
@@ -68,10 +65,6 @@ class Game extends React.Component {
             this.putMines(i, j, squares);
 
             this.putNumbers(squares);
-
-            this.setState({
-                squares: squares
-            });
 
         }
 
@@ -89,19 +82,22 @@ class Game extends React.Component {
             return;
         }
 
-        // if left click - reveal
+        squares[i][j]['revealed'] = true;
 
         // if bomb - boom
         if (squares[i][j]['bomb']) {
-            squares[i][j]['revealed'] = true;
-            this.setState({
-                squares: squares,
-                win: -1
-            });
-
-            console.log('you lost!!');
+            this.setState({win: -1});
+            return;
         }
-        // if not bomb - show number
+
+        // if left click - reveal
+        if (squares[i][j]['number'] === 0) {
+            this.openRecursively(squares, i, j);
+        }
+
+        this.setState({
+            squares: squares,
+        });
     }
 
     putMines(i, j, squares) {
@@ -120,7 +116,6 @@ class Game extends React.Component {
             squares[first][second]['bomb'] = true;
         }
     }
-
 
     render() {
         return (
@@ -171,6 +166,32 @@ class Game extends React.Component {
                     }
                 }
                 squares[i][j]['number'] = counter;
+            }
+        }
+    }
+
+    openRecursively(squares, i, j) {
+        for (let k = -1; k < 2; k++) {
+            for (let l = -1; l < 2; l++) {
+
+                let left = i + k;
+                let right = j + l;
+
+                if (left < 0 || right < 0) {
+                    continue;
+                }
+                if (left >= squares.length || right >= squares[0].length) {
+                    continue;
+                }
+
+                if(!squares[left][right]['revealed']) {
+                    squares[left][right]['revealed'] = true;
+
+                    if (squares[left][right]['number'] === 0) {
+                        this.openRecursively(squares, left, right);
+                    }
+                }
+
             }
         }
     }
