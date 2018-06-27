@@ -19,46 +19,11 @@ class Game extends React.Component {
             height: 10,
             width: 10,
             mines: 30,
-            squares: this.createTwoDimArray()
+            squares: this.createSquaresArray()
         };
     }
 
-    renderSquare(i, j) {
-        return (
-            <Square
-                i={i}
-                j={j}
-                data={this.state.squares[i][j]}
-                handleClick={this.handleClick}
-            />
-        );
-    }
-
-
-    handleClick(e, i, j) {
-        if (!this.state.started) {
-            this.setState({started: true});
-        }
-
-        let clicked = this.state.squares[i][j];
-        // if is revealed - return
-        if (clicked.revealed) {
-            return;
-        }
-
-        // if right click - flag / unflag
-        if (e.type === 'contextmenu') {
-            let squares = this.state.squares.slice();
-            squares[i][j]['flagged'] = !squares[i][j]['flagged'];
-            this.setState({squares: squares});
-            return;
-        }
-
-        // if left click
-
-    }
-
-    createTwoDimArray() {
+    createSquaresArray() {
         let result = [];
         for (let i = 0; i < 10; i++) {
             let subArray = [];
@@ -75,6 +40,87 @@ class Game extends React.Component {
         }
         return result;
     }
+
+
+    renderSquare(i, j) {
+        return (
+            <Square
+                i={i}
+                j={j}
+                data={this.state.squares[i][j]}
+                handleClick={this.handleClick}
+            />
+        );
+    }
+
+
+    getRandInRange(max) {
+        return Math.floor(Math.random() * (max));
+    }
+
+
+    handleClick(e, i, j) {
+        if (!this.state.started) {
+            this.setState({started: true});
+
+            let squares = this.state.squares.slice();
+
+            this.putMines(i, j, squares);
+
+            this.putNumbers(squares);
+
+            this.setState({
+                squares: squares
+            });
+
+        }
+
+        // if is revealed or finished game - return
+        if (this.state.squares[i][j].revealed || this.state.win !== 0) {
+            return;
+        }
+
+        let squares = this.state.squares.slice();
+
+        // if right click - flag / unflag
+        if (e.type === 'contextmenu') {
+            squares[i][j]['flagged'] = !squares[i][j]['flagged'];
+            this.setState({squares: squares});
+            return;
+        }
+
+        // if left click - reveal
+
+        // if bomb - boom
+        if (squares[i][j]['bomb']) {
+            squares[i][j]['revealed'] = true;
+            this.setState({
+                squares: squares,
+                win: -1
+            });
+
+            console.log('you lost!!');
+        }
+        // if not bomb - show number
+    }
+
+    putMines(i, j, squares) {
+        for (let k = 0; k < this.state.mines; k++) {
+            let first = this.getRandInRange(this.state.width);
+            let second = this.getRandInRange(this.state.height);
+            if (i === first && j === second) {
+                k += 1;
+                continue;
+            }
+            if (squares[first][second]['bomb']) {
+                k += 1;
+                continue;
+            }
+
+            squares[first][second]['bomb'] = true;
+        }
+    }
+
 
     render() {
         return (
@@ -97,6 +143,37 @@ class Game extends React.Component {
     }
 
 
+    putNumbers(squares) {
+        for (let i = 0; i < squares.length; i++) {
+            for (let j = 0; j < squares[0].length; j++) {
+                if (squares[i][j]['bomb']) {
+                    continue;
+                }
+                let counter = 0;
+
+                for (let k = -1; k < 2; k++) {
+                    for (let l = -1; l < 2; l++) {
+
+                        let left = i + k;
+                        let right = j + l;
+                        if (k === 0 && l === 0) {
+                            continue;
+                        }
+                        if (left < 0 || right < 0) {
+                            continue;
+                        }
+                        if (left >= squares.length || right >= squares[0].length) {
+                            continue;
+                        }
+                        if (squares[left][right]['bomb']) {
+                            counter++;
+                        }
+                    }
+                }
+                squares[i][j]['number'] = counter;
+            }
+        }
+    }
 }
 
 
