@@ -9,7 +9,7 @@ export default class TimeAndMovesCounter extends React.Component {
 
         this.state = {
             timePassed: 0,
-            current: 1
+            currentDisplay: 1
         };
     }
 
@@ -22,15 +22,17 @@ export default class TimeAndMovesCounter extends React.Component {
     }
 
     tick() {
-        this.setState({timePassed: this.state.timePassed + 1});
+        if(this.props.started) {
+            this.setState({timePassed: this.state.timePassed + 1});
+        }
     }
 
     switchDisplay() {
-        this.setState({current: this.state.current ^ 1});
+        this.setState({currentDisplay: this.state.currentDisplay ^ 1});
     }
 
     render() {
-        if (this.state.current) {
+        if (this.state.currentDisplay) {
             return <button onClick={() => this.switchDisplay()}>{this.props.moves}</button>
         }
         return <button onClick={() => this.switchDisplay()}>
