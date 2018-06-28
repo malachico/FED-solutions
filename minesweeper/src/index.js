@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "./BoardHeader";
+import Header from "./Header";
 import './css/board-header.css';
 import Square from "./Square";
 import ReactDOM from 'react-dom';
@@ -10,6 +10,7 @@ class Game extends React.Component {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
+        this.startNewGame = this.startNewGame.bind(this);
 
         this.state = {
             started: false,
@@ -21,6 +22,7 @@ class Game extends React.Component {
             mines: 2,
             squares: this.createSquaresArray()
         };
+
     }
 
     createSquaresArray() {
@@ -122,11 +124,25 @@ class Game extends React.Component {
         }
     }
 
+    startNewGame(){
+        this.setState({
+            started: false,
+            win: 0,
+            moves: 0,
+            flags: 0,
+            height: 10,
+            width: 10,
+            mines: 2,
+            squares: this.createSquaresArray()
+        });
+
+    }
+
     render() {
         return (
             <div className="board">
                 <Header className="board-header" mines={this.state.mines} moves={this.state.moves}
-                        flags={this.state.flags} started={this.state.started}/>
+                        flags={this.state.flags} started={this.state.started} startNewGame={this.startNewGame}/>
                 <table className="squares-board">
                     <tbody>
                     {this.state.squares.map((row, i) =>
