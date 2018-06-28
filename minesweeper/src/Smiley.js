@@ -1,6 +1,4 @@
 import React from 'react';
-import BombsCounter from "./BombsCounter";
-import TimeAndMovesCounter from "./TimeAndMovesCounter";
 import smiley from "./utils/smiley.png";
 
 
