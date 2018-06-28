@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "./Header";
 import './css/board-header.css';
+import './css/board.css';
 import Square from "./Square";
 import ReactDOM from 'react-dom';
 
@@ -11,25 +12,41 @@ class Game extends React.Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.startNewGame = this.startNewGame.bind(this);
+        let width = 30;
+        let height = 30;
 
         this.state = {
             started: false,
             win: 0,
             moves: 0,
             flags: 0,
-            height: 10,
-            width: 10,
-            mines: 2,
-            squares: this.createSquaresArray()
+            height: height,
+            width: width,
+            mines: 30,
+            squares: this.createSquaresArray(height, width)
         };
 
     }
 
-    createSquaresArray() {
+    startNewGame() {
+        this.setState({
+            started: false,
+            win: 0,
+            moves: 0,
+            flags: 0,
+            height: this.state.height,
+            width: this.state.width,
+            mines: this.state.mines,
+            squares: this.createSquaresArray(this.state.height, this.state.width)
+        });
+
+    }
+
+    createSquaresArray(height, width) {
         let result = [];
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < height; i++) {
             let subArray = [];
-            for (let j = 0; j < 10; j++) {
+            for (let j = 0; j < width; j++) {
                 let item = {
                     revealed: false,
                     flagged: false,
@@ -80,7 +97,11 @@ class Game extends React.Component {
         // if right click - flag / unflag
         if (e.type === 'contextmenu') {
             squares[i][j]['flagged'] = !squares[i][j]['flagged'];
-            this.setState({squares: squares});
+
+            this.setState({
+                squares: squares,
+                flags: this.countFlags()
+            });
             return;
         }
 
@@ -99,10 +120,10 @@ class Game extends React.Component {
 
         this.setState({
             squares: squares,
-            moves: this.state.moves+1
+            moves: this.state.moves + 1
         });
 
-        if(this.checkIfWin(squares)){
+        if (this.checkIfWin(squares)) {
             this.setState({win: 1});
         }
     }
@@ -124,39 +145,6 @@ class Game extends React.Component {
         }
     }
 
-    startNewGame(){
-        this.setState({
-            started: false,
-            win: 0,
-            moves: 0,
-            flags: 0,
-            height: 10,
-            width: 10,
-            mines: 2,
-            squares: this.createSquaresArray()
-        });
-
-    }
-
-    render() {
-        return (
-            <div className="board">
-                <Header mines={this.state.mines} moves={this.state.moves}
-                        flags={this.state.flags} started={this.state.started} startNewGame={this.startNewGame}/>
-                <table className="squares-board">
-                    <tbody>
-                    {this.state.squares.map((row, i) =>
-                        <tr key={i}>
-                            {row.map((col, j) =>
-                                <td key={j}>{this.renderSquare(i, j)}</td>
-                            )}
-                        </tr>
-                    )}
-                    </tbody>
-                </table>
-            </div>
-        );
-    }
 
     putNumbers(squares) {
         for (let i = 0; i < squares.length; i++) {
@@ -204,7 +192,7 @@ class Game extends React.Component {
                     continue;
                 }
 
-                if(!squares[left][right]['revealed']) {
+                if (!squares[left][right]['revealed']) {
                     squares[left][right]['revealed'] = true;
 
                     if (squares[left][right]['number'] === 0) {
@@ -219,12 +207,44 @@ class Game extends React.Component {
     checkIfWin(squares) {
         for (let i = 0; i < squares.length; i++) {
             for (let j = 0; j < squares[0].length; j++) {
-                if(!squares[i][j]['bomb'] && !squares[i][j]['revealed']){
+                if (!squares[i][j]['bomb'] && !squares[i][j]['revealed']) {
                     return false
                 }
             }
         }
         return true;
+    }
+
+    render() {
+        return (
+            <div className="board">
+                <Header mines={this.state.mines} moves={this.state.moves}
+                        flags={this.state.flags} started={this.state.started} startNewGame={this.startNewGame}/>
+                <table className="squares-board">
+                    <tbody>
+                    {this.state.squares.map((row, i) =>
+                        <tr key={i}>
+                            {row.map((col, j) =>
+                                <td key={j}>{this.renderSquare(i, j)}</td>
+                            )}
+                        </tr>
+                    )}
+                    </tbody>
+                </table>
+            </div>
+        );
+    }
+
+    countFlags() {
+        let flagsCounter = 0;
+        for (let i = 0; i < this.state.squares.length; i++) {
+            for (let j = 0; j < this.state.squares[0].length; j++) {
+                if (this.state.squares[i][j]['flagged']){
+                    flagsCounter++;
+                }
+            }
+        }
+        return flagsCounter;
     }
 }
 

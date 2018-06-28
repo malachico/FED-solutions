@@ -11,9 +11,9 @@ export default class Header extends React.Component {
     render() {
         return (
             <div className="counters">
-                <BombsCounter classname="bombs-counter" mines={this.props.mines} flags={this.props.flags}/>
+                <BombsCounter mines={this.props.mines} flags={this.props.flags}/>
                 <Smiley startNewGame={this.props.startNewGame}/>
-                <TimeAndMovesCounter classname="time-counter" moves={this.props.moves} started={this.props.started}/>
+                <TimeAndMovesCounter className="time-counter" moves={this.props.moves} started={this.props.started}/>
             </div>
         );
     }
