@@ -141,7 +141,7 @@ class Game extends React.Component {
     render() {
         return (
             <div className="board">
-                <Header className="board-header" mines={this.state.mines} moves={this.state.moves}
+                <Header mines={this.state.mines} moves={this.state.moves}
                         flags={this.state.flags} started={this.state.started} startNewGame={this.startNewGame}/>
                 <table className="squares-board">
                     <tbody>
