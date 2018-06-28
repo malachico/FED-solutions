@@ -1,5 +1,7 @@
 import React from 'react';
-
+import timer from './utils/timer.png'
+import plays from './utils/plays.png'
+import './css/header.css'
 
 export default class TimeAndMovesCounter extends React.Component {
     constructor(props) {
@@ -22,9 +24,9 @@ export default class TimeAndMovesCounter extends React.Component {
     }
 
     tick() {
-        if(this.props.started) {
+        if (this.props.started) {
             this.setState({timePassed: this.state.timePassed + 1});
-        }else {
+        } else {
             this.setState({timePassed: 0});
         }
     }
@@ -35,10 +37,19 @@ export default class TimeAndMovesCounter extends React.Component {
 
     render() {
         if (this.state.currentDisplay) {
-            return <button onClick={() => this.switchDisplay()}>{this.props.moves}</button>
+            return (<button className='counter' onClick={() => this.switchDisplay()}>
+                    <span>
+                        <img className='header-icon' src={plays}/>
+                        <span>{this.props.moves}</span>
+                    </span>
+                </button>
+            );
         }
-        return <button onClick={() => this.switchDisplay()}>
-            <span>{this.state.timePassed}</span>
+        return <button className='counter' onClick={() => this.switchDisplay()}>
+            <span>
+                <img className='header-icon' src={timer}/>
+                <span>{this.state.timePassed}</span>
+            </span>
         </button>
     }
 }

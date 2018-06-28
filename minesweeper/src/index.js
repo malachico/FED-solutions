@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from "./Header";
-import './css/board-header.css';
+import './css/header.css';
 import './css/board.css';
 import Square from "./Square";
+import boom from "./utils/boom.png"
+import win from "./utils/win.gif"
 import ReactDOM from 'react-dom';
 
 
@@ -22,7 +24,7 @@ class Game extends React.Component {
             flags: 0,
             height: height,
             width: width,
-            mines: 30,
+            mines: 15,
             squares: this.createSquaresArray(height, width)
         };
 
@@ -215,7 +217,41 @@ class Game extends React.Component {
         return true;
     }
 
+    countFlags() {
+        let flagsCounter = 0;
+        for (let i = 0; i < this.state.squares.length; i++) {
+            for (let j = 0; j < this.state.squares[0].length; j++) {
+                if (this.state.squares[i][j]['flagged']) {
+                    flagsCounter++;
+                }
+            }
+            return flagsCounter;
+        }
+    }
+
     render() {
+        if (this.state.win === -1) {
+
+            return (
+                <div className="board">
+                    <Header mines={this.state.mines} moves={this.state.moves}
+                            flags={this.state.flags} started={this.state.started} startNewGame={this.startNewGame}/>
+
+                    <img className="boom" src={boom}/>
+                </div>
+            );
+        }
+        if (this.state.win === 1) {
+
+            return (
+                <div className="board">
+                    <Header mines={this.state.mines} moves={this.state.moves}
+                            flags={this.state.flags} started={this.state.started} startNewGame={this.startNewGame}/>
+
+                    <img className="boom" src={win}/>
+                </div>
+            );
+        }
         return (
             <div className="board">
                 <Header mines={this.state.mines} moves={this.state.moves}
@@ -235,17 +271,7 @@ class Game extends React.Component {
         );
     }
 
-    countFlags() {
-        let flagsCounter = 0;
-        for (let i = 0; i < this.state.squares.length; i++) {
-            for (let j = 0; j < this.state.squares[0].length; j++) {
-                if (this.state.squares[i][j]['flagged']){
-                    flagsCounter++;
-                }
-            }
-        }
-        return flagsCounter;
-    }
+
 }
 
 
