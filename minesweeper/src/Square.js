@@ -9,7 +9,7 @@ export default class Square extends React.Component {
             if (this.props.data['flagged']) {
                 return (<button className="flag" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
                                 onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
-                        <img src={flag} alt={""}/>
+                        <img className="flag" src={flag} alt={""}/>
                     </button>
                 );
             }
