@@ -26,8 +26,6 @@ export default class TimeAndMovesCounter extends React.Component {
     tick() {
         if (this.props.started) {
             this.setState({timePassed: this.state.timePassed + 1});
-        } else {
-            this.setState({timePassed: 0});
         }
     }
 

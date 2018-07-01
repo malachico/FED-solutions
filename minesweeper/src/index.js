@@ -111,7 +111,7 @@ class Game extends React.Component {
 
         // if bomb - boom
         if (squares[i][j]['bomb']) {
-            this.setState({win: -1});
+            this.setState({win: -1, started: false});
             return;
         }
 
@@ -126,7 +126,7 @@ class Game extends React.Component {
         });
 
         if (this.checkIfWin(squares)) {
-            this.setState({win: 1});
+            this.setState({win: 1, started: false});
         }
     }
 
