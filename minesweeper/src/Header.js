@@ -10,7 +10,7 @@ export default class Header extends React.Component {
         return (
             <div className="counters">
                 <BombsCounter mines={this.props.mines} flags={this.props.flags}/>
-                <Smiley startNewGame={this.props.startNewGame}/>
+                <Smiley onStart={this.props.onStart}/>
                 <TimeAndMovesCounter className="counter" moves={this.props.moves} started={this.props.started}/>
             </div>
         );

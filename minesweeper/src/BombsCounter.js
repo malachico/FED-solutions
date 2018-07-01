@@ -1,6 +1,6 @@
 import React from 'react';
 import "./css/header.css"
-import bomb from "./utils/bomb.png"
+import bomb from "./images/bomb.png"
 
 export default class BombsCounter extends React.Component {
     render() {

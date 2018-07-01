@@ -1,6 +1,6 @@
 import React from 'react';
-import timer from './utils/timer.png'
-import plays from './utils/plays.png'
+import timer from './images/timer.png'
+import plays from './images/plays.png'
 import './css/header.css'
 
 export default class TimeAndMovesCounter extends React.Component {

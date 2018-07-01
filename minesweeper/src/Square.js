@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/square.css';
-import flag from "./utils/flag.png";
+import flag from "./images/flag.png";
 
 export default class Square extends React.Component {
     render() {
