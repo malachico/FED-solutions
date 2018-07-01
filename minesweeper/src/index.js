@@ -20,13 +20,14 @@ class Game extends React.Component {
         this.onStart(height, width);
         this.handleClick = this.handleClick.bind(this);
         this.onStart = this.onStart.bind(this);
+        this.switchDisplay = this.switchDisplay.bind(this);
 
         this.state = this.onStart(height, width, mines);
-
     }
 
     onStart(height, width, mines) {
         return {
+            currentDisplay: utils.MOVES_COUNTER,
             started: false,
             win: 0,
             moves: 0,
@@ -37,6 +38,12 @@ class Game extends React.Component {
             squares: utils.createSquaresArray(height, width)
         };
 
+    }
+
+
+    switchDisplay() {
+        console.log(" in switch disp");
+        this.setState({currentDisplay: this.state.currentDisplay ^ 1});
     }
 
 
@@ -95,8 +102,6 @@ class Game extends React.Component {
             squares: squares,
             flags: utils.countFlags(this.state.squares)
         });
-
-        return;
     }
 
     handleFirstClick(i, j, squares) {
@@ -104,6 +109,7 @@ class Game extends React.Component {
         utils.putMines(i, j, squares, this.state.mines);
         utils.putNumbers(squares);
     }
+
 
     render() {
         if (this.state.win === utils.LOST) {
@@ -120,8 +126,7 @@ class Game extends React.Component {
 
     renderGame() {
         return <div className="board">
-            <Header mines={this.state.mines} moves={this.state.moves}
-                    flags={this.state.flags} started={this.state.started} onStart={this.onStart}/>
+            {this.renderHeader()}
             <table className="squares-board">
                 <tbody>
                 {this.state.squares.map((row, i) =>
@@ -139,9 +144,7 @@ class Game extends React.Component {
     renderWin() {
         return (
             <div className="board">
-                <Header mines={this.state.mines} moves={this.state.moves}
-                        flags={this.state.flags} started={this.state.started} onStart={this.onStart}/>
-
+                {this.renderHeader()}
                 <img className="boom" src={win} alt=""/>
             </div>
         );
@@ -150,12 +153,16 @@ class Game extends React.Component {
     renderLost() {
         return (
             <div className="board">
-                <Header mines={this.state.mines} moves={this.state.moves}
-                        flags={this.state.flags} started={this.state.started} onStart={this.onStart}/>
-
+                {this.renderHeader()}
                 <img className="boom" src={boom} alt=""/>
             </div>
         );
+    }
+
+    renderHeader() {
+        return <Header mines={this.state.mines} moves={this.state.moves} currentDisplay={this.state.currentDisplay}
+                       switchDisplay={this.switchDisplay} flags={this.state.flags} started={this.state.started}
+                       onStart={this.onStart}/>;
     }
 }
 

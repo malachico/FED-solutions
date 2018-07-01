@@ -1,7 +1,8 @@
 export const LOST = -1;
 export const WIN = 1;
 export const RIGHT_CLICK = 'contextmenu';
-
+export const TIME_COUNTER = 0;
+export const MOVES_COUNTER = 1;
 
 
 export function countFlags(arr) {
