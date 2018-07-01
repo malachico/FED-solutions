@@ -112,6 +112,15 @@ export function getRandInRange(max) {
 }
 
 export function createSquaresArray(height, width) {
+    // return Array(width).fill(0).map(x => Array(height).fill(
+    //     {
+    //         revealed: false,
+    //         flagged: false,
+    //         bomb: false,
+    //         number: 0
+    //     }
+    // ));
+    //
     let result = [];
     for (let i = 0; i < height; i++) {
         let subArray = [];

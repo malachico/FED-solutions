@@ -37,7 +37,7 @@ export default class TimeAndMovesCounter extends React.Component {
         if (this.state.currentDisplay) {
             return (<button className='counter' onClick={() => this.switchDisplay()}>
                     <span>
-                        <img className='header-icon' src={plays}/>
+                        <img className='header-icon' src={plays} alt=""/>
                         <span>{this.props.moves}</span>
                     </span>
                 </button>
@@ -45,7 +45,7 @@ export default class TimeAndMovesCounter extends React.Component {
         }
         return <button className='counter' onClick={() => this.switchDisplay()}>
             <span>
-                <img className='header-icon' src={timer}/>
+                <img className='header-icon' src={timer} alt=""/>
                 <span>{this.state.timePassed}</span>
             </span>
         </button>

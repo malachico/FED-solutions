@@ -21,16 +21,7 @@ class Game extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.onStart = this.onStart.bind(this);
 
-        this.state = {
-            started: false,
-            win: 0,
-            moves: 0,
-            flags: 0,
-            height: height,
-            width: width,
-            mines: mines,
-            squares: utils.createSquaresArray(height, width)
-        };
+        this.state = this.onStart(height, width, mines);
 
     }
 
@@ -68,21 +59,12 @@ class Game extends React.Component {
             this.handleFirstClick(i, j, squares);
         }
 
-
         if (this.state.squares[i][j].revealed || this.state.win !== 0) {
             return;
         }
 
-
         if (e.type === utils.RIGHT_CLICK) {
-            squares[i][j]['flagged'] = !squares[i][j]['flagged'];
-
-            this.setState({
-                squares: squares,
-                flags: this.countFlags(this.state.squares)
-            });
-
-            return;
+            return this.handleRightClick(squares, i, j);
         }
 
         squares[i][j]['revealed'] = true;
@@ -92,7 +74,6 @@ class Game extends React.Component {
             return;
         }
 
-        // if left click - reveal
         if (squares[i][j]['number'] === 0) {
             utils.openRecursively(squares, i, j);
         }
@@ -105,6 +86,17 @@ class Game extends React.Component {
         if (utils.checkIfWin(squares)) {
             this.setState({win: 1, started: false});
         }
+    }
+
+    handleRightClick(squares, i, j) {
+        squares[i][j]['flagged'] = !squares[i][j]['flagged'];
+
+        this.setState({
+            squares: squares,
+            flags: utils.countFlags(this.state.squares)
+        });
+
+        return;
     }
 
     handleFirstClick(i, j, squares) {
@@ -150,7 +142,7 @@ class Game extends React.Component {
                 <Header mines={this.state.mines} moves={this.state.moves}
                         flags={this.state.flags} started={this.state.started} onStart={this.onStart}/>
 
-                <img className="boom" src={win}/>
+                <img className="boom" src={win} alt=""/>
             </div>
         );
     }
@@ -161,7 +153,7 @@ class Game extends React.Component {
                 <Header mines={this.state.mines} moves={this.state.moves}
                         flags={this.state.flags} started={this.state.started} onStart={this.onStart}/>
 
-                <img className="boom" src={boom}/>
+                <img className="boom" src={boom} alt=""/>
             </div>
         );
     }
