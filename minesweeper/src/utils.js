@@ -8,6 +8,13 @@ export const DEFAULT_WIDTH = 25;
 export const DEFAULT_MINES = 25;
 
 
+let item = {
+    revealed: false,
+    flagged: false,
+    bomb: false,
+    number: 0
+};
+
 export function countFlags(arr) {
     let flagsCounter = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -117,30 +124,7 @@ export function getRandInRange(max) {
 }
 
 export function createSquaresArray(height, width) {
-    // return Array(width).fill(0).map(x => Array(height).fill(
-    //     {
-    //         revealed: false,
-    //         flagged: false,
-    //         bomb: false,
-    //         number: 0
-    //     }
-    // ));
-    //
-    let result = [];
-    for (let i = 0; i < height; i++) {
-        let subArray = [];
-        for (let j = 0; j < width; j++) {
-            let item = {
-                revealed: false,
-                flagged: false,
-                bomb: false,
-                number: 0
-            };
-            subArray.push(item);
-        }
-        result.push(subArray);
-    }
-    return result;
+    return new Array(height).fill(0).map(row => new Array(width).fill().map(col => Object.create(item)));
 }
 
 export function validateParameters(mines, height, width) {

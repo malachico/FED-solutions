@@ -32,9 +32,8 @@ export default class Square extends React.Component {
 
     revealedButton() {
         return <button className="opened square" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
-                 onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
-
-                {this.props.data['number'] ? this.props.data['number'] : ' '}
-            </button>;
+                       onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
+            {this.props.data['number'] ? this.props.data['number'] : ' '}
+        </button>;
     }
 }
