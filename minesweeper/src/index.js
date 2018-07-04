@@ -144,6 +144,10 @@ class Game extends React.Component {
 
 
     setParams(mines, height, width) {
+        height = Number(height);
+        width = Number(width);
+        mines = Number(mines);
+
         if (utils.validateParameters(mines, height, width) === false) {
             alert("invalid parameters");
             return;

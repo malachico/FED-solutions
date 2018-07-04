@@ -124,7 +124,7 @@ export function getRandInRange(max) {
 }
 
 export function createSquaresArray(height, width) {
-    return new Array(height).fill(0).map(row => new Array(width).fill().map(col => Object.create(item)));
+    return new Array(height).fill(0).map(row => new Array(width).fill(0).map(col => Object.create(item)));
 }
 
 export function validateParameters(mines, height, width) {
