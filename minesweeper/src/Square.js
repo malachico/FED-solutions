@@ -15,25 +15,21 @@ export default class Square extends React.Component {
     }
 
 
-    emptyButton() {
-        return (<button className="square" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
-                        onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
-            </button>
-        );
-    }
+    emptyButton = () => <button className="square"
+                                onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
+                                onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
+    </button>;
 
-    flaggedButton() {
-        return (<button className="flag" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
-                        onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
-                <img className="flag" src={flag} alt={""}/>
-            </button>
-        );
-    }
 
-    revealedButton() {
-        return <button className="opened square" onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
-                       onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
-            {this.props.data['number'] ? this.props.data['number'] : ' '}
-        </button>;
-    }
+    flaggedButton = () => <button className="flag"
+                                  onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
+                                  onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
+        <img className="flag" src={flag} alt={""}/>
+    </button>;
+
+    revealedButton = () => <button className="opened square"
+                                   onClick={(e) => this.props.handleClick(e, this.props.i, this.props.j)}
+                                   onContextMenu={(e) => this.props.handleClick(e, this.props.i, this.props.j)}>
+        {this.props.data['number'] ? this.props.data['number'] : ' '}
+    </button>;
 }

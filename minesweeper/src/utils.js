@@ -137,3 +137,23 @@ export function validateParameters(mines, height, width) {
     }
     return true;
 }
+
+
+export function tick() {
+    this.setState({timePassed: this.state.timePassed + 1});
+}
+
+export function getInitialState(height, width, mines) {
+    return {
+        timePassed: 0,
+        currentDisplay: MOVES_COUNTER,
+        started: false,
+        win: 0,
+        moves: 0,
+        flags: 0,
+        height: height,
+        width: width,
+        mines: mines,
+        squares: createSquaresArray(height, width)
+    };
+}

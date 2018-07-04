@@ -23,71 +23,28 @@ class Game extends React.Component {
         this.setParams = this.setParams.bind(this);
         this.initNewGame = this.initNewGame.bind(this);
 
-        this.state = {
-            timePassed: 0,
-            currentDisplay: utils.MOVES_COUNTER,
-            started: false,
-            win: 0,
-            moves: 0,
-            flags: 0,
-            height: height,
-            width: width,
-            mines: mines,
-            squares: utils.createSquaresArray(height, width)
-        }
+        this.state = utils.getInitialState(height, width, mines);
     }
 
     componentDidMount() {
-        this.timerID = setInterval(() => this.tick(), 1000);
+        if (this.state.started) {
+            this.timerID = setInterval(() => utils.tick(), 1000);
+        }
     }
 
     componentWillUnmount() {
         clearInterval(this.timerID);
     }
 
-    tick() {
-        if (this.state.started) {
-            this.setState({timePassed: this.state.timePassed + 1});
-        }
-    }
 
-    initNewGame(height, width, mines) {
-        if (!height || !width || !mines) {
-            height = this.state.height;
-            width = this.state.width;
-            mines = this.state.mines;
-        }
-
-
-        this.setState({
-            timePassed: 0,
-            currentDisplay: utils.MOVES_COUNTER,
-            started: false,
-            win: 0,
-            moves: 0,
-            flags: 0,
-            height: height,
-            width: width,
-            mines: mines,
-            squares: utils.createSquaresArray(height, width)
-        });
+    initNewGame(height = this.state.height, width = this.state.width, mines = this.state.mines) {
+        console.log(height);
+        this.setState(utils.getInitialState(height, width, mines));
     }
 
 
     switchDisplay() {
         this.setState({currentDisplay: this.state.currentDisplay ^ 1});
-    }
-
-
-    renderSquare(i, j) {
-        return (
-            <Square
-                i={i}
-                j={j}
-                data={this.state.squares[i][j]}
-                handleClick={this.handleClick}
-            />
-        );
     }
 
 
@@ -176,8 +133,8 @@ class Game extends React.Component {
         </div>;
     }
 
-    renderGame = () => {
-        return <table className="squares-board">
+    renderGame = () =>
+        <table className="squares-board">
             <tbody>
             {this.state.squares.map((row, i) =>
                 <tr key={i}>
@@ -188,15 +145,10 @@ class Game extends React.Component {
             )}
             </tbody>
         </table>;
-    };
 
-    renderWin = () => {
-        return <img className="boom" src={win} alt=""/>;
-    };
+    renderWin = () => <img className="boom" src={win} alt=""/>;
 
-    renderLost = () => {
-        return <img className="boom" src={boom} alt=""/>;
-    };
+    renderLost = () => <img className="boom" src={boom} alt=""/>;
 
     renderHeader = () => {
         return <Header mines={this.state.mines} moves={this.state.moves} currentDisplay={this.state.currentDisplay}
@@ -205,11 +157,16 @@ class Game extends React.Component {
         />;
     };
 
-    renderFooter = () => {
-        return (<Footer setParams={this.setParams}/>);
-    }
-}
+    renderFooter = () => (<Footer setParams={this.setParams}/>);
 
+    renderSquare = (i, j) =>
+        <Square
+            i={i}
+            j={j}
+            data={this.state.squares[i][j]}
+            handleClick={this.handleClick}
+        />;
+}
 
 ReactDOM.render(
     <Game/>,

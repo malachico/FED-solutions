@@ -18,7 +18,7 @@ export default class Footer extends React.Component {
                 <input className="input-field" value={this.state.heightInputValue} onChange={e => this.updateHeightInputValue(e)} placeholder={"height"}/>
                 <input className="input-field" value={this.state.widthInputValue} onChange={e => this.updateWidthInputValue(e)} placeholder={"width"}/>
                 <button className="init-button"
-                    onClick={() => this.props.setParams(this.state.minesInputValue, this.state.heightInputValue, this.state.widthInputValue)}>initial game
+                    onClick={() => this.props.setParams(this.state.minesInputValue, this.state.heightInputValue, this.state.widthInputValue)}>init game
                 </button>
 
             </div>
