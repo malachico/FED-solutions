@@ -153,65 +153,57 @@ class Game extends React.Component {
     }
 
     render() {
+        let body;
+
         if (this.state.win === utils.LOST) {
-            return this.renderLost();
+            body = this.renderLost();
         }
-        if (this.state.win === utils.WIN) {
-            return this.renderWin();
+        else if (this.state.win === utils.WIN) {
+            body = this.renderWin();
         }
-        return (this.renderGame());
-    }
+        else {
+            body = this.renderGame();
+        }
 
-
-    renderGame() {
         return <div className="board">
             {this.renderHeader()}
-            <table className="squares-board">
-                <tbody>
-                {this.state.squares.map((row, i) =>
-                    <tr key={i}>
-                        {row.map((col, j) =>
-                            <td key={j}>{this.renderSquare(i, j)}</td>
-                        )}
-                    </tr>
-                )}
-                </tbody>
-            </table>
+            {body}
             {this.renderFooter()}
         </div>;
     }
 
-    renderWin() {
-        return (
-            <div className="board">
-                {this.renderHeader()}
-                <img className="boom" src={win} alt=""/>
-                {this.renderFooter()}
-            </div>
-        );
-    }
+    renderGame = () => {
+        return <table className="squares-board">
+            <tbody>
+            {this.state.squares.map((row, i) =>
+                <tr key={i}>
+                    {row.map((col, j) =>
+                        <td key={j}>{this.renderSquare(i, j)}</td>
+                    )}
+                </tr>
+            )}
+            </tbody>
+        </table>;
+    };
 
-    renderLost() {
-        return (
-            <div className="board">
-                {this.renderHeader()}
-                <img className="boom" src={boom} alt=""/>
-                {this.renderFooter()}
-            </div>
-        );
-    }
+    renderWin = () => {
+        return <img className="boom" src={win} alt=""/>;
+    };
 
-    renderHeader() {
+    renderLost = () => {
+        return <img className="boom" src={boom} alt=""/>;
+    };
+
+    renderHeader = () => {
         return <Header mines={this.state.mines} moves={this.state.moves} currentDisplay={this.state.currentDisplay}
                        switchDisplay={this.switchDisplay} flags={this.state.flags}
                        initNewGame={this.initNewGame} timePassed={this.state.timePassed}
         />;
-    }
+    };
 
-    renderFooter() {
+    renderFooter = () => {
         return (<Footer setParams={this.setParams}/>);
     }
-
 }
 
 
