@@ -37,7 +37,6 @@ class Game extends React.Component {
     }
 
     initNewGame(height = this.state.height, width = this.state.width, mines = this.state.mines) {
-        // TODO: why default parameter height is Proxy object?
         height = this.state.height;
         this.setState(utils.getInitialState(height, width, mines));
     }
