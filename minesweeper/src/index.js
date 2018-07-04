@@ -36,8 +36,13 @@ class Game extends React.Component {
         clearInterval(this.timerID);
     }
 
-    initNewGame(height = this.state.height, width = this.state.width, mines = this.state.mines) {
-        height = this.state.height;
+    initNewGame(height, width, mines) {
+        if(!height || !width || !mines){
+            height = this.state.height;
+            width = this.state.width;
+            mines = this.state.mines;
+        }
+
         this.setState(utils.getInitialState(height, width, mines));
     }
 
