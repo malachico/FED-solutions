@@ -25,7 +25,7 @@ export default class Header extends React.Component {
             <div className="counters">
                 <BombsCounter mines={this.props.mines} flags={this.props.flags}/>
                 <Smiley initNewGame={this.props.initNewGame}/>
-                <TimeCounter className="counter" incrementTime={this.props.incrementTime} timePassed={this.props.timePassed} switchDisplay={this.props.switchDisplay} started={this.props.started}/>
+                <TimeCounter className="counter" timePassed={this.props.timePassed} switchDisplay={this.props.switchDisplay}/>
             </div>
         );
     }
@@ -35,7 +35,7 @@ export default class Header extends React.Component {
             <div className="counters">
                 <BombsCounter mines={this.props.mines} flags={this.props.flags}/>
                 <Smiley initNewGame={this.props.initNewGame}/>
-                <MovesCounter className="counter" incrementTime={this.props.incrementTime} timePassed={this.props.timePassed} switchDisplay={this.props.switchDisplay} moves={this.props.moves}/>
+                <MovesCounter className="counter" switchDisplay={this.props.switchDisplay} moves={this.props.moves}/>
             </div>
         );
     }

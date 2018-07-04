@@ -22,7 +22,6 @@ class Game extends React.Component {
         this.switchDisplay = this.switchDisplay.bind(this);
         this.setParams = this.setParams.bind(this);
         this.initNewGame = this.initNewGame.bind(this);
-        this.incrementTime = this.incrementTime.bind(this);
 
         this.state = {
             timePassed: 0,
@@ -38,12 +37,21 @@ class Game extends React.Component {
         }
     }
 
-    incrementTime() {
-        this.setState({timePassed: this.state.timePassed + 1});
+    componentDidMount() {
+        this.timerID = setInterval(() => this.tick(), 1000);
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
 
-initNewGame(height, width, mines) {
+    tick() {
+        if (this.state.started) {
+            this.setState({timePassed: this.state.timePassed + 1});
+        }
+    }
+
+    initNewGame(height, width, mines) {
         if (!height || !width || !mines) {
             height = this.state.height;
             width = this.state.width;
@@ -136,6 +144,11 @@ initNewGame(height, width, mines) {
 
 
     setParams(mines, height, width) {
+        if (utils.validateParameters(mines, height, width) === false) {
+            alert("invalid parameters");
+            return;
+        }
+
         this.initNewGame(height, width, mines);
     }
 
@@ -190,8 +203,9 @@ initNewGame(height, width, mines) {
 
     renderHeader() {
         return <Header mines={this.state.mines} moves={this.state.moves} currentDisplay={this.state.currentDisplay}
-                       switchDisplay={this.switchDisplay} flags={this.state.flags} started={this.state.started}
-                       initNewGame={this.initNewGame} timePassed={this.state.timePassed} incrementTime={this.incrementTime}/>;
+                       switchDisplay={this.switchDisplay} flags={this.state.flags}
+                       initNewGame={this.initNewGame} timePassed={this.state.timePassed}
+        />;
     }
 
     renderFooter() {

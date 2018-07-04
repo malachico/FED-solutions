@@ -111,6 +111,7 @@ export function putMines(i, j, squares, mines) {
         squares[first][second]['bomb'] = true;
     }
 }
+
 export function getRandInRange(max) {
     return Math.floor(Math.random() * (max));
 }
@@ -140,4 +141,15 @@ export function createSquaresArray(height, width) {
         result.push(subArray);
     }
     return result;
+}
+
+export function validateParameters(mines, height, width) {
+    if (height * width < mines - 1) {
+        console.log("here");
+        return false;
+    }
+    if (height < 5 || width < 5 || mines < 1) {
+        return false
+    }
+    return true;
 }
