@@ -8,7 +8,6 @@ import boom from "./images/boom.png"
 import win from "./images/win.gif"
 import ReactDOM from 'react-dom';
 import * as utils from "./utils.js"
-import {DEFAULT_HEIGHT} from "./utils";
 
 
 class Game extends React.Component {
@@ -23,8 +22,10 @@ class Game extends React.Component {
         this.switchDisplay = this.switchDisplay.bind(this);
         this.setParams = this.setParams.bind(this);
         this.initNewGame = this.initNewGame.bind(this);
+        this.incrementTime = this.incrementTime.bind(this);
 
         this.state = {
+            timePassed: 0,
             currentDisplay: utils.MOVES_COUNTER,
             started: false,
             win: 0,
@@ -37,8 +38,12 @@ class Game extends React.Component {
         }
     }
 
+    incrementTime() {
+        this.setState({timePassed: this.state.timePassed + 1});
+    }
 
-    initNewGame(height, width, mines) {
+
+initNewGame(height, width, mines) {
         if (!height || !width || !mines) {
             height = this.state.height;
             width = this.state.width;
@@ -47,6 +52,7 @@ class Game extends React.Component {
 
 
         this.setState({
+            timePassed: 0,
             currentDisplay: utils.MOVES_COUNTER,
             started: false,
             win: 0,
@@ -185,7 +191,7 @@ class Game extends React.Component {
     renderHeader() {
         return <Header mines={this.state.mines} moves={this.state.moves} currentDisplay={this.state.currentDisplay}
                        switchDisplay={this.switchDisplay} flags={this.state.flags} started={this.state.started}
-                       initNewGame={this.initNewGame}/>;
+                       initNewGame={this.initNewGame} timePassed={this.state.timePassed} incrementTime={this.incrementTime}/>;
     }
 
     renderFooter() {
