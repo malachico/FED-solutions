@@ -11,10 +11,6 @@ export default class Header extends React.Component {
 
     render() {
 
-        console.log("display : " + this.props.currentDisplay);
-        console.log("tc : " + utils.TIME_COUNTER);
-        console.log("mc : " + utils.MOVES_COUNTER);
-
         if (this.props.currentDisplay === utils.MOVES_COUNTER) {
             return this.renderMoves();
         }
@@ -28,7 +24,7 @@ export default class Header extends React.Component {
         return (
             <div className="counters">
                 <BombsCounter mines={this.props.mines} flags={this.props.flags}/>
-                <Smiley onStart={this.props.onStart}/>
+                <Smiley initNewGame={this.props.initNewGame}/>
                 <TimeCounter className="counter" switchDisplay={this.props.switchDisplay} started={this.props.started}/>
             </div>
         );
@@ -38,7 +34,7 @@ export default class Header extends React.Component {
         return (
             <div className="counters">
                 <BombsCounter mines={this.props.mines} flags={this.props.flags}/>
-                <Smiley onStart={this.props.onStart}/>
+                <Smiley initNewGame={this.props.initNewGame}/>
                 <MovesCounter className="counter" switchDisplay={this.props.switchDisplay} moves={this.props.moves}/>
             </div>
         );

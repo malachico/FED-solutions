@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from "./Header";
+import Footer from "./Footer";
 import './css/header.css';
 import './css/board.css';
 import Square from "./Square";
@@ -7,26 +8,23 @@ import boom from "./images/boom.png"
 import win from "./images/win.gif"
 import ReactDOM from 'react-dom';
 import * as utils from "./utils.js"
+import {DEFAULT_HEIGHT} from "./utils";
 
 
 class Game extends React.Component {
     constructor(props) {
         super(props);
 
-        let width = 30;
-        let height = 30;
-        let mines = 15;
+        let width = utils.DEFAULT_WIDTH;
+        let height = utils.DEFAULT_HEIGHT;
+        let mines = utils.DEFAULT_MINES;
 
-        this.onStart(height, width);
         this.handleClick = this.handleClick.bind(this);
-        this.onStart = this.onStart.bind(this);
         this.switchDisplay = this.switchDisplay.bind(this);
+        this.setParams = this.setParams.bind(this);
+        this.initNewGame = this.initNewGame.bind(this);
 
-        this.state = this.onStart(height, width, mines);
-    }
-
-    onStart(height, width, mines) {
-        return {
+        this.state = {
             currentDisplay: utils.MOVES_COUNTER,
             started: false,
             win: 0,
@@ -36,13 +34,33 @@ class Game extends React.Component {
             width: width,
             mines: mines,
             squares: utils.createSquaresArray(height, width)
-        };
+        }
+    }
 
+
+    initNewGame(height, width, mines) {
+        if (!height || !width || !mines) {
+            height = this.state.height;
+            width = this.state.width;
+            mines = this.state.mines;
+        }
+
+
+        this.setState({
+            currentDisplay: utils.MOVES_COUNTER,
+            started: false,
+            win: 0,
+            moves: 0,
+            flags: 0,
+            height: height,
+            width: width,
+            mines: mines,
+            squares: utils.createSquaresArray(height, width)
+        });
     }
 
 
     switchDisplay() {
-        console.log(" in switch disp");
         this.setState({currentDisplay: this.state.currentDisplay ^ 1});
     }
 
@@ -111,6 +129,10 @@ class Game extends React.Component {
     }
 
 
+    setParams(mines, height, width) {
+        this.initNewGame(height, width, mines);
+    }
+
     render() {
         if (this.state.win === utils.LOST) {
             return this.renderLost();
@@ -118,9 +140,7 @@ class Game extends React.Component {
         if (this.state.win === utils.WIN) {
             return this.renderWin();
         }
-        return (
-            this.renderGame()
-        );
+        return (this.renderGame());
     }
 
 
@@ -138,6 +158,7 @@ class Game extends React.Component {
                 )}
                 </tbody>
             </table>
+            {this.renderFooter()}
         </div>;
     }
 
@@ -146,6 +167,7 @@ class Game extends React.Component {
             <div className="board">
                 {this.renderHeader()}
                 <img className="boom" src={win} alt=""/>
+                {this.renderFooter()}
             </div>
         );
     }
@@ -155,6 +177,7 @@ class Game extends React.Component {
             <div className="board">
                 {this.renderHeader()}
                 <img className="boom" src={boom} alt=""/>
+                {this.renderFooter()}
             </div>
         );
     }
@@ -162,8 +185,13 @@ class Game extends React.Component {
     renderHeader() {
         return <Header mines={this.state.mines} moves={this.state.moves} currentDisplay={this.state.currentDisplay}
                        switchDisplay={this.switchDisplay} flags={this.state.flags} started={this.state.started}
-                       onStart={this.onStart}/>;
+                       initNewGame={this.initNewGame}/>;
     }
+
+    renderFooter() {
+        return (<Footer setParams={this.setParams}/>);
+    }
+
 }
 
 

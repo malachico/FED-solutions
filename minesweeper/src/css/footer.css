@@ -1,0 +1,16 @@
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.input-field {
+    border: 1px solid black;
+}
+
+.init-button {
+    border: 1px solid blue;
+}
