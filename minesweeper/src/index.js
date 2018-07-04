@@ -36,17 +36,15 @@ class Game extends React.Component {
         clearInterval(this.timerID);
     }
 
-
     initNewGame(height = this.state.height, width = this.state.width, mines = this.state.mines) {
-        console.log(height);
+        // TODO: why default parameter height is Proxy object?
+        height = this.state.height;
         this.setState(utils.getInitialState(height, width, mines));
     }
-
 
     switchDisplay() {
         this.setState({currentDisplay: this.state.currentDisplay ^ 1});
     }
-
 
     handleClick(e, i, j) {
         let squares = this.state.squares.slice();
