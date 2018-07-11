@@ -6,25 +6,41 @@ Write some code to query a bank account's transaction history for any bank trans
 
 
 class Account {
-    constructor(balance = 0) {
-        this.balance = balance;
+
+    constructor(id, balance = 0) {
+        this._balance = balance;
+        this._id = id;
+        this.history = "";
     }
 
     deposit(amount) {
-        this.balance += amount;
+        this._balance += amount;
     }
 
     withdrawal(amount) {
-        this.balance -= amount;
+        this._balance -= amount;
     }
 
-    getBalance() {
-        return this.balance;
+    get balance() {
+        return this._balance;
     }
 
-    transfer (accountOther, number) {
-        this.withdrawal(number);
-        accountOther.deposit(number);
+    set balance(balance) {
+        this._balance = balance;
+    }
+
+    set id(value) {
+        this._id = value;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    transfer(accountOther, amount) {
+        this.withdrawal(amount);
+        accountOther.deposit(amount);
+        this.history += "transfer to : " + accountOther.id + ", amount : " + amount;
     }
 }
 
@@ -43,19 +59,26 @@ test('add money to account', () => {
 
 test('check balance after deposit', () => {
     account.deposit(100);
-    expect(account.getBalance()).toEqual(100);
+    expect(account.balance).toEqual(100);
 });
 
 test('check balance after deposit', () => {
     account.deposit(100);
-    expect(account.getBalance()).toEqual(100);
+    expect(account.balance).toEqual(100);
 });
 
 
 test('transfer money from account to another', () => {
     account.deposit(100);
     account.transfer(accountOther, 50);
-    expect(account.getBalance()).toEqual(50);
-    expect(accountOther.getBalance()).toEqual(50);
+    expect(account.balance).toEqual(50);
+    expect(accountOther.balance).toEqual(50);
+});
 
+
+test('keep track of account transfer history', () => {
+    account.deposit(100);
+    const amount = 50;
+    account.transfer(accountOther, amount);
+    expect(account.history).toContain("transfer to : " + accountOther.id + ", amount : " + amount);
 });
